@@ -1,4 +1,4 @@
-Using template 'D:/42079/Projects/idk/2021.2.4f1/Editor/Data/PlaybackEngines/AndroidPlayer\Apk\UnityManifest.xml'
+Using template 'Assets/Plugins/Android\AndroidManifest.xml'
 
 android.permission.INTERNET was added because:
 	UnityEngine.Networking was present in:
@@ -9,6 +9,8 @@ android.permission.INTERNET was added because:
 		Unity.XR.ARCore-FeaturesChecked.txt
 android.hardware.touchscreen.multitouch, android.hardware.touchscreen.multitouch.distinct were enabled because:
 	UnityEngine.Input::GetTouch was present in:
+		Assembly-CSharp-FeaturesChecked.txt
 		UnityEngine.UI-FeaturesChecked.txt
 	UnityEngine.Input::get_touchCount was present in:
+		Assembly-CSharp-FeaturesChecked.txt
 		UnityEngine.UI-FeaturesChecked.txt

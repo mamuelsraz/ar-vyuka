@@ -3,6 +3,30 @@
 
 library {
   maven_library {
+    artifactId: "arcore_client"
+  }
+  digests {
+    sha256: "\206.\326\330iF5]O$U\341KI\301Z\361[zT\276]W\215S\355\234\210\255d1\033"
+  }
+}
+library {
+  maven_library {
+    artifactId: "ARPresto"
+  }
+  digests {
+    sha256: "\230\035\021L\340\230\376\303\201;/\233\377T\265\211@\006\232\332\021,\353\f\fF\030gy\353\363\256"
+  }
+}
+library {
+  maven_library {
+    artifactId: "UnityARCore"
+  }
+  digests {
+    sha256: "4#\032N\256\345\360\261\300\037\227e\363d\305\r)\337\226\246\v\311\207k\206a\323#\274\366\230\362"
+  }
+}
+library {
+  maven_library {
     artifactId: "unityandroidpermissions"
   }
   digests {
@@ -14,12 +38,30 @@ library {
     sha256: "\211\305\000\244_H\av8\370Z&3\315\345m{I\353h\035\325\216\"\274\217I\333\364\312\341\342"
   }
 }
+library {
+  digests {
+    sha256: " \211\371\343((s92\270\353\242\267\370\277\310\177\327\244.\025r\177\262\325\240<\b\303r*d"
+  }
+}
 library_dependencies {
 }
 library_dependencies {
   library_index: 1
 }
+library_dependencies {
+  library_index: 2
+}
+library_dependencies {
+  library_index: 3
+}
+library_dependencies {
+  library_index: 4
+}
+library_dependencies {
+  library_index: 5
+}
 module_dependencies {
   module_name: "base"
-  dependency_index: 1
+  dependency_index: 4
+  dependency_index: 5
 }
