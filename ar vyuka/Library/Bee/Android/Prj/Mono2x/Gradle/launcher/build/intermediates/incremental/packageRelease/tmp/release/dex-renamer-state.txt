@@ -1,4 +1,4 @@
-#Fri Feb 04 16:40:11 CET 2022
+#Tue Feb 08 22:04:32 CET 2022
 base.0=D\:\\42079\\Projects\\_Github\\ar-vyuka\\ar vyuka\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

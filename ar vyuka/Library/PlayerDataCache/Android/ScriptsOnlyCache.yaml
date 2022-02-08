@@ -1,9 +1,11 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ARFeatheredPlaneMeshVisualizer
     - ARPlacer
+    - ArObject
+    - TextSpeech.TextToSpeech
     Unity.Mobile.AndroidLogcat.Editor.dll:
-    - Unity.Android.Logcat.AndroidLogcatConsoleWindow
     - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -12,9 +14,13 @@ ScriptsOnlyBuild:
     Unity.XR.ARCore.dll:
     - UnityEngine.XR.ARCore.ARCoreLoader
     Unity.XR.ARFoundation.dll:
+    - UnityEngine.XR.ARFoundation.ARAnchorManager
     - UnityEngine.XR.ARFoundation.ARCameraBackground
     - UnityEngine.XR.ARFoundation.ARCameraManager
     - UnityEngine.XR.ARFoundation.ARInputManager
+    - UnityEngine.XR.ARFoundation.ARPlane
+    - UnityEngine.XR.ARFoundation.ARPlaneManager
+    - UnityEngine.XR.ARFoundation.ARPlaneMeshVisualizer
     - UnityEngine.XR.ARFoundation.ARPoseDriver
     - UnityEngine.XR.ARFoundation.ARRaycastManager
     - UnityEngine.XR.ARFoundation.ARSession
@@ -48,6 +54,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 89
@@ -57,30 +65,40 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1740}
+      Script: {instanceID: 1570}
     - Class: 114
-      Script: {instanceID: 2734}
+      Script: {instanceID: 1574}
     - Class: 114
-      Script: {instanceID: 3646}
+      Script: {instanceID: 1704}
     - Class: 114
-      Script: {instanceID: 3650}
+      Script: {instanceID: 2470}
     - Class: 114
-      Script: {instanceID: 4196}
+      Script: {instanceID: 2702}
     - Class: 114
-      Script: {instanceID: 4532}
+      Script: {instanceID: 3614}
     - Class: 114
-      Script: {instanceID: 5292}
+      Script: {instanceID: 3618}
     - Class: 114
-      Script: {instanceID: 22066}
+      Script: {instanceID: 3624}
+    - Class: 114
+      Script: {instanceID: 4096}
+    - Class: 114
+      Script: {instanceID: 4168}
+    - Class: 114
+      Script: {instanceID: 4504}
+    - Class: 114
+      Script: {instanceID: 5086}
+    - Class: 114
+      Script: {instanceID: 5266}
+    - Class: 114
+      Script: {instanceID: 20542}
+    - Class: 114
+      Script: {instanceID: 20652}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
-      Script: {instanceID: 0}
-    - Class: 213
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -95,6 +113,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.XR.LegacyInputHelpers.dll
     namespaceName: UnityEditor.XR.LegacyInputHelpers
     className: CameraOffset
+  - hash:
+      serializedVersion: 2
+      Hash: 16f068b43706f3883b6199e702ae30a8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ARPlacer
   - hash:
       serializedVersion: 2
       Hash: e8733e39efa851172df1c9eaef062265
@@ -817,10 +841,22 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 4b6c36717e318ff70f92409fa92e0bdd
+      Hash: 2e1b57c4de4c067e694a3f55d857aae8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ARPlacer
+    className: ArObject
+  - hash:
+      serializedVersion: 2
+      Hash: 76b7e183d9d3382d8f2b9ae1c01d0aa6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ARFeatheredPlaneMeshVisualizer
+  - hash:
+      serializedVersion: 2
+      Hash: 236072f0178bea70833d0fa911057a8e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ArObjectHolder
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

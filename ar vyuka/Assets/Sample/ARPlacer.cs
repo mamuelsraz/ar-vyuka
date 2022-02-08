@@ -3,55 +3,95 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using TextSpeech;
 
+[RequireComponent(typeof(ARAnchorManager))]
+[RequireComponent(typeof(ARRaycastManager))]
+[RequireComponent(typeof(ARPlaneManager))]
 public class ARPlacer : MonoBehaviour
 {
-    public ARRaycastManager raycastManager;
+    [SerializeField] ArObject ObjectToPlace;
 
-    public GameObject ObjToPlace;
-    public GameObject placementIndicator;
+    static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+    List<ARAnchor> m_AnchorPoints;
 
-    Pose placementPose = new Pose();
-    bool canPlace;
+    ARRaycastManager m_RaycastManager;
+    ARAnchorManager m_AnchorManager;
+    ARPlaneManager m_PlaneManager;
 
-    private void Update()
+    void Awake()
     {
-        UpdatePlacementPose();
-        UpdatePlacementIndicator();
+        m_RaycastManager = GetComponent<ARRaycastManager>();
+        m_AnchorManager = GetComponent<ARAnchorManager>();
+        m_PlaneManager = GetComponent<ARPlaneManager>();
+        m_AnchorPoints = new List<ARAnchor>();
 
-        if (canPlace && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        GameObject h = ObjectToPlace.Instantiate(Vector3.zero);
+        Debug.LogError(h.GetComponentInParent<ArObjectHolder>() != null);
+    }
+
+    void Update()
+    {
+        if (Input.touchCount == 0)
+            return;
+
+        var touch = Input.GetTouch(0);
+        if (touch.phase != TouchPhase.Began)
+            return;
+
+        //we hit an object
+        Ray ray = Camera.main.ScreenPointToRay(touch.position);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
         {
-            Instantiate(ObjToPlace, placementPose.position, placementPose.rotation);
+            Debug.Log("HIT");
+        }
+        if (hit.collider.gameObject.name == "Cube")
+        {
+            Debug.LogWarning("Hit something");
+            PlaySound(hit);
+            return;
+        }
+
+        if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
+        {
+            var hitPose = s_Hits[0].pose;
+            var hitTrackableId = s_Hits[0].trackableId;
+            var hitPlane = m_PlaneManager.GetPlane(hitTrackableId);
+
+            var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
+
+            ObjectToPlace.Instantiate(anchor.transform);
+
+            Debug.Log("Spawning");
+
+            if (anchor == null)
+            {
+                Debug.Log("Error creating anchor.");
+            }
+            else
+            {
+                m_AnchorPoints.Add(anchor);
+            }
         }
     }
 
-    void UpdatePlacementIndicator()
+    void PlaySound(RaycastHit hit)
     {
-        if (canPlace)
+        GameObject obj = hit.collider.gameObject;
+
+        if (Random.Range(0f, 1f) > 0.5f)
         {
-            placementIndicator.SetActive(true);
-            placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
+            TextToSpeech TTSManager = TextToSpeech.instance;
+            TTSManager.Setting("en-EN", TTSManager.pitch, TTSManager.rate);
+            TTSManager.StartSpeak("Cube");
         }
         else
         {
-            placementIndicator.SetActive(false);
+            TextToSpeech TTSManager = TextToSpeech.instance;
+            TTSManager.Setting("fr-FR", TTSManager.pitch, TTSManager.rate);
+            TTSManager.StartSpeak("Cube");
         }
-    }
 
-    void UpdatePlacementPose()
-    {
-        var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
-        var hits = new List<ARRaycastHit>();
-        raycastManager.Raycast(screenCenter, hits, TrackableType.AllTypes);
-        canPlace = hits.Count > 0;
-        if (canPlace)
-        {
-            placementPose = hits[0].pose;
-
-            var cameraForward = Camera.current.transform.forward;
-            var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
-            placementPose.rotation = Quaternion.LookRotation(cameraBearing);
-            Debug.Log(hits[0].hitType);
-        }
     }
 }
