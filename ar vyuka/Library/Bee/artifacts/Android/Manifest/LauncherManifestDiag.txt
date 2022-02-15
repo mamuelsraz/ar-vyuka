@@ -1,2 +1,0 @@
-Using template 'D:/42079/Projects/idk/2021.2.4f1/Editor/Data/PlaybackEngines/AndroidPlayer\Apk\LauncherManifest.xml'
-
