@@ -35,14 +35,23 @@ public class ARPlacer : MonoBehaviour
     {
         if (AppManager.instance.CurrenState == AppState.PlaceState)
         {
+            if (!placementIndicator.activeSelf) placementIndicator.SetActive(true);
+
             UpdatePlacementPose();
             UpdatePlacementIndicator();
 
-            if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            /*if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 PlaceObject();
-            }
+            }*/
         }
+
+        if (placementIndicator.activeSelf) placementIndicator.SetActive(false);
+    }
+
+    public void TryPlace()
+    {
+        if (placementPoseIsValid) PlaceObject();
     }
 
     private void UpdatePlacementPose()
@@ -101,6 +110,7 @@ public class ARPlacer : MonoBehaviour
             }
         }*/
         #endregion
+
 
         var hitPose = s_Hits[0].pose;
         var hitTrackableId = s_Hits[0].trackableId;
