@@ -1,30 +1,36 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New AR object", menuName = "AR/ArObject", order = 1)]
 public class ArObject : ScriptableObject
 {
     public GameObject obj;
-    public string enName;
-    public string frName;
+    public Category category;
+    public NameInLanguage[] NamesInLanguages;
+}
 
-    public GameObject Instantiate(Vector3 position)
-    {
-        return Instantiate(position, Quaternion.identity);
-    }
+[System.Serializable]
+public class NameInLanguage
+{
+    public string name;
+    public string language;
 
-    public GameObject Instantiate(Vector3 position, Quaternion rotation)
+    public static string Find(NameInLanguage[] names, string key)
     {
-        GameObject newObject = Instantiate(obj, position, rotation);
-        ArObjectHolder holder = newObject.AddComponent<ArObjectHolder>();
-        holder.obj = this;
-        return newObject;
-    }
+        foreach (var item in names)
+        {
+            if (item.language == key) return item.name;
+        }
 
-    public GameObject Instantiate(Transform parent)
-    {
-        GameObject newObject = Instantiate(obj, parent);
-        ArObjectHolder holder = obj.AddComponent<ArObjectHolder>();
-        holder.obj = this;
-        return newObject;
+        Debug.LogWarning("No names found by language");
+        return null;
     }
+}
+
+[SerializeField]
+public enum Category 
+{
+    food,
+    animals,
+    other
 }

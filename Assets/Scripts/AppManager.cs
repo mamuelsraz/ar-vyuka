@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class OnStateEnterEvent : UnityEvent<AppState>{}
+public class OnStateEnterEvent : UnityEvent<AppState, AppState>{}
 
 public class AppManager : MonoBehaviour
 {
     public static AppManager instance;
+    public static ArObjectInstance currentArObjectInstance;
+    public static ArObject currentArObject;
+
     [HideInInspector]
     public OnStateEnterEvent OnStateEnter;
     [HideInInspector]
@@ -21,9 +24,9 @@ public class AppManager : MonoBehaviour
         set {
             if (currentState != value)
             {
-                OnStateExit.Invoke(currentState);
+                OnStateExit.Invoke(currentState, value);
+                OnStateEnter.Invoke(value, currentState);
                 currentState = value;
-                OnStateEnter.Invoke(currentState);
             }
         }
     }
@@ -38,6 +41,10 @@ public class AppManager : MonoBehaviour
     {
         CurrenState = (AppState)state;
     }
+    public void AddState(int num)
+    {
+        CurrenState = (AppState)((int)currentState + num);
+    }
 }
 
 
@@ -45,6 +52,20 @@ public class AppManager : MonoBehaviour
 public enum AppState
 {
     MenuState,
+    ChooseState,
     PlaceState,
     LookState
+}
+
+[SerializeField]
+public class ArObjectInstance
+{
+    public GameObject instance;
+    public ArObject ArObj;
+
+    public ArObjectInstance(GameObject instance, ArObject ArObject)
+    {
+        this.instance = instance;
+        this.ArObj = ArObject;
+    }
 }

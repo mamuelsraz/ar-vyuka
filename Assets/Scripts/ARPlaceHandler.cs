@@ -8,9 +8,8 @@ using TextSpeech;
 [RequireComponent(typeof(ARAnchorManager))]
 [RequireComponent(typeof(ARRaycastManager))]
 [RequireComponent(typeof(ARPlaneManager))]
-public class ARPlacer : MonoBehaviour
+public class ARPlaceHandler : MonoBehaviour
 {
-    [SerializeField] ArObject ObjectToPlace;
     [SerializeField] GameObject placementIndicator;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
@@ -39,14 +38,11 @@ public class ARPlacer : MonoBehaviour
 
             UpdatePlacementPose();
             UpdatePlacementIndicator();
-
-            /*if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                PlaceObject();
-            }*/
         }
-
-        if (placementIndicator.activeSelf) placementIndicator.SetActive(false);
+        else
+        {
+            if (placementIndicator.activeSelf) placementIndicator.SetActive(false);
+        }
     }
 
     public void TryPlace()
@@ -78,47 +74,22 @@ public class ARPlacer : MonoBehaviour
     {
         if (placementPoseIsValid)
         {
-            placementIndicator.SetActive(true);
+            if(!placementIndicator.activeSelf) placementIndicator.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
         }
         else
         {
-            placementIndicator.SetActive(false);
+            if (placementIndicator.activeSelf) placementIndicator.SetActive(false);
         }
     }
 
     void PlaceObject()
     {
-        #region help
-        /*if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
-        {
-            var hitPose = s_Hits[0].pose;
-            var hitTrackableId = s_Hits[0].trackableId;
-            var hitPlane = m_PlaneManager.GetPlane(hitTrackableId);
-
-            var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
-
-            ObjectToPlace.Instantiate(anchor.transform);
-
-            if (anchor == null)
-            {
-                Debug.Log("Error creating anchor.");
-            }
-            else
-            {
-                m_AnchorPoints.Add(anchor);
-            }
-        }*/
-        #endregion
-
-
         var hitPose = s_Hits[0].pose;
         var hitTrackableId = s_Hits[0].trackableId;
         var hitPlane = m_PlaneManager.GetPlane(hitTrackableId);
 
         var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
-
-        ObjectToPlace.Instantiate(anchor.transform);
 
         if (anchor == null)
         {
@@ -127,6 +98,12 @@ public class ARPlacer : MonoBehaviour
         else
         {
             m_AnchorPoints.Add(anchor);
+
+            GameObject instance = Instantiate(AppManager.currentArObject.obj, anchor.transform);
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+            AppManager.currentArObjectInstance = new ArObjectInstance(instance, AppManager.currentArObject);
+
             AppManager.instance.CurrenState = AppState.LookState;
         }
     }

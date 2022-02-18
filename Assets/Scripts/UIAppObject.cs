@@ -20,32 +20,36 @@ public class UIAppObject : MonoBehaviour
 
         if (AppManager.instance.CurrenState == targetState)
         {
-            Open();
+            Open(true);
         }
-        else Close();
+        else Close(true);
 
         AppManager.instance.OnStateEnter.AddListener(TryOpen);
         AppManager.instance.OnStateExit.AddListener(TryClose);
     }
 
-    void TryOpen(AppState state)
+    void TryOpen(AppState state, AppState lastState)
     {
-        if (state == targetState) Open();
+        bool isBiggerPriority = (int)state > (int)lastState;
+        if (state == targetState) Open(isBiggerPriority);
     }
 
-    void TryClose(AppState state)
+    void TryClose(AppState state, AppState lastState)
     {
-        if (state == targetState) Close();
+        bool isBiggerPriority = (int)state > (int)lastState;
+        if (state == targetState) Close(isBiggerPriority);
     }
 
-    protected virtual void Open()
+    protected virtual void Open(bool isBiggerPriority)
     {
+        Rtransform.anchoredPosition = new Vector2(isBiggerPriority ? ScreenSize.x : ScreenSize.x * -1, 0f)/2;
         Rtransform.DOAnchorPos(Vector2.zero, UIAppObject.UISpeed);
     }
 
-    protected virtual void Close()
+    protected virtual void Close(bool isBiggerPriority)
     {
-        Vector2 movePos = new Vector2(ScreenSize.x * -1f, 0f);
+        Rtransform.anchoredPosition = Vector2.zero;
+        Vector2 movePos = new Vector2(isBiggerPriority ? ScreenSize.x : ScreenSize.x * -1, 0f)/2;
         Rtransform.DOAnchorPos(movePos, UIAppObject.UISpeed);
     }
 }
