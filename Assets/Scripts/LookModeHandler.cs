@@ -38,4 +38,10 @@ public class LookModeHandler : MonoBehaviour
             Debug.LogError("No current AR object to play");
         }
     }
+
+    public void ExitLookMode()
+    {
+        Destroy(AppManager.currentArObjectInstance.instance.gameObject);
+        AppManager.currentArObjectInstance = null;
+    }
 }

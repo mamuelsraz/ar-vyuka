@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.ARFoundation;
 
 [System.Serializable]
 public class OnStateEnterEvent : UnityEvent<AppState, AppState>{}
@@ -11,6 +13,8 @@ public class AppManager : MonoBehaviour
     public static AppManager instance;
     public static ArObjectInstance currentArObjectInstance;
     public static ArObject currentArObject;
+    public ARSession session;
+    public AppState[] ARSessionEnabled;
 
     [HideInInspector]
     public OnStateEnterEvent OnStateEnter;
@@ -35,6 +39,7 @@ public class AppManager : MonoBehaviour
     {
         instance = this;
         CurrenState = AppState.MenuState;
+        OnStateEnter.AddListener(ToggleARSession);
     }
 
     public void ChangeState(int state)
@@ -44,6 +49,15 @@ public class AppManager : MonoBehaviour
     public void AddState(int num)
     {
         CurrenState = (AppState)((int)currentState + num);
+    }
+
+    void ToggleARSession(AppState appState, AppState lastState)
+    {
+        if (ARSessionEnabled.Contains(appState))
+        {
+            if (!session.isActiveAndEnabled) session.gameObject.SetActive(true);
+        }
+        else if (session.isActiveAndEnabled) session.gameObject.SetActive(false);
     }
 }
 

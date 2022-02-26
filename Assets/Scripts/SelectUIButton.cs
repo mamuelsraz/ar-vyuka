@@ -5,10 +5,17 @@ using UnityEngine;
 public class SelectUIButton : MonoBehaviour
 {
     public ArObject ARObject;
+    public UIObjectPopulator ui;
+    public Category category;
 
-    public void Click()
+    public void ClickArObj()
     {
         AppManager.instance.AddState(1);
         AppManager.currentArObject = ARObject;
+    }
+
+    public void ClickCategory()
+    {
+        ui.ChangeCategory(category);
     }
 }

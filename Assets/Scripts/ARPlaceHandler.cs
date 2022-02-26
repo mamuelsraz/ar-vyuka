@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using TextSpeech;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ARAnchorManager))]
 [RequireComponent(typeof(ARRaycastManager))]
@@ -11,6 +12,7 @@ using TextSpeech;
 public class ARPlaceHandler : MonoBehaviour
 {
     [SerializeField] GameObject placementIndicator;
+    [SerializeField] Button placeButton;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
     List<ARAnchor> m_AnchorPoints;
@@ -38,6 +40,8 @@ public class ARPlaceHandler : MonoBehaviour
 
             UpdatePlacementPose();
             UpdatePlacementIndicator();
+
+            placeButton.interactable = placementPoseIsValid;
         }
         else
         {

@@ -1,19 +1,13 @@
 {
     "m_SelectedDeviceId": "104d78890411",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "104d78890411",
+        "name": "com.DefaultCompany.arvyuka",
+        "processId": 31335,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 5201,
-            "exited": true
-        },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
@@ -42,6 +36,24 @@
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
             "processId": 24882,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 15718,
+            "exited": false
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 22310,
+            "exited": false
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 31335,
             "exited": false
         }
     ],

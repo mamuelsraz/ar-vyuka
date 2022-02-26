@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIAppObject : MonoBehaviour
+public class UIAppPanel : MonoBehaviour
 {
     public AppState targetState;
     Vector2 ScreenSize;
@@ -20,9 +20,9 @@ public class UIAppObject : MonoBehaviour
 
         if (AppManager.instance.CurrenState == targetState)
         {
-            Open(true);
+            OpenNow();
         }
-        else Close(true);
+        else CloseNow();
 
         AppManager.instance.OnStateEnter.AddListener(TryOpen);
         AppManager.instance.OnStateExit.AddListener(TryClose);
@@ -43,13 +43,23 @@ public class UIAppObject : MonoBehaviour
     protected virtual void Open(bool isBiggerPriority)
     {
         Rtransform.anchoredPosition = new Vector2(isBiggerPriority ? ScreenSize.x : ScreenSize.x * -1, 0f)/2;
-        Rtransform.DOAnchorPos(Vector2.zero, UIAppObject.UISpeed);
+        Rtransform.DOAnchorPos(Vector2.zero, UIAppPanel.UISpeed);
     }
 
     protected virtual void Close(bool isBiggerPriority)
     {
         Rtransform.anchoredPosition = Vector2.zero;
         Vector2 movePos = new Vector2(isBiggerPriority ? ScreenSize.x : ScreenSize.x * -1, 0f)/2;
-        Rtransform.DOAnchorPos(movePos, UIAppObject.UISpeed);
+        Rtransform.DOAnchorPos(movePos, UIAppPanel.UISpeed);
+    }
+
+    protected virtual void CloseNow()
+    {
+        Rtransform.anchoredPosition = new Vector2(ScreenSize.x * -1, 0f) / 2;
+    }
+
+    protected virtual void OpenNow()
+    {
+        Rtransform.anchoredPosition = Vector2.zero;
     }
 }
