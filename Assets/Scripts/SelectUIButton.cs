@@ -10,12 +10,7 @@ public class SelectUIButton : MonoBehaviour
 
     public void ClickArObj()
     {
-        AppManager.instance.AddState(1);
+        AppManager.instance.CurrenState = AppState.PlaceState;
         AppManager.currentArObject = ARObject;
-    }
-
-    public void ClickCategory()
-    {
-        ui.ChangeCategory(category);
     }
 }

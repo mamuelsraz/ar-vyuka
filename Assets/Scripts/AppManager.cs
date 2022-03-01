@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 
 [System.Serializable]
-public class OnStateEnterEvent : UnityEvent<AppState, AppState>{}
+public class OnStateEnterEvent : UnityEvent<AppState, AppState> { }
 
 public class AppManager : MonoBehaviour
 {
@@ -22,10 +21,11 @@ public class AppManager : MonoBehaviour
     public OnStateEnterEvent OnStateExit;
 
     private AppState currentState;
-    public AppState CurrenState 
+    public AppState CurrenState
     {
         get { return currentState; }
-        set {
+        set
+        {
             if (currentState != value)
             {
                 OnStateExit.Invoke(currentState, value);
@@ -42,13 +42,17 @@ public class AppManager : MonoBehaviour
         OnStateEnter.AddListener(ToggleARSession);
     }
 
-    public void ChangeState(int state)
+    private void Update()
     {
-        CurrenState = (AppState)state;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //go back (can't work now cus of LookModeHandler)
+        }
     }
-    public void AddState(int num)
+
+    public void ChangeState(string state)
     {
-        CurrenState = (AppState)((int)currentState + num);
+        CurrenState = (AppState)Enum.Parse(typeof(AppState), state);
     }
 
     void ToggleARSession(AppState appState, AppState lastState)
@@ -68,6 +72,7 @@ public enum AppState
     MenuState,
     ChooseState,
     PlaceState,
+    ImagePlaceState,
     LookState
 }
 

@@ -10,7 +10,7 @@ public class UIAppPanel : MonoBehaviour
 
     RectTransform Rtransform;
 
-    static float UISpeed = 0.25f;
+    public static float UISpeed = 0.25f;
 
     private void Start()
     {

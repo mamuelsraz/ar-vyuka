@@ -10,63 +10,54 @@ public class UIObjectPopulator : MonoBehaviour
 {
     public ObjectLoadHandler loader;
     public Transform panelParent;
+    public Transform categoryParent;
+    [Space]
     public GameObject prefab;
-    public GameObject categoryPrefab;
-    public Transform categoryHolder;
+    public GameObject categoryButtonPrefab;
+    public GameObject categoryPanelPrefab;
     [Space]
     Category selectedCategory = 0;
 
     private void Start()
     {
         InitCategories();
-        //Populate();
     }
 
     void InitCategories()
     {
+        bool first = true;
+
         foreach (var category in loader.AllObjects)
         {
-            Button item = Instantiate(categoryPrefab, categoryHolder).GetComponent<Button>();
+            //category button
+            Button button = Instantiate(categoryButtonPrefab, categoryParent).GetComponent<Button>();
 
-            item.GetComponentInChildren<TextMeshProUGUI>().text = category.Key.ToString();
-            SelectUIButton uiButton = item.gameObject.AddComponent<SelectUIButton>();
-            uiButton.category = category.Key;
-            uiButton.ui = this;
-            item.onClick.AddListener(uiButton.ClickCategory);
+            GameObject panel = Instantiate(categoryPanelPrefab, panelParent);
+
+            button.GetComponentInChildren<TextMeshProUGUI>().text = category.Key.ToString();
+            TabButton tabButton = button.gameObject.AddComponent<TabButton>();
+            tabButton.tabGroup = "category";
+            tabButton.tab = panel;
+
+            if (first) { first = false; tabButton.startSelected = true; }
+
+            //category panel
+            foreach (var item in category.Value)
+            {
+                CreateNewElement(item, panel.transform);
+                //fix this!
+                AppManager.currentArObject = item;
+            }
         }
     }
 
-    void Populate()
+    void CreateNewElement(ArObject ARObj, Transform parent)
     {
-        var category = loader.AllObjects[selectedCategory];
-        foreach (var item in category)
-        {
-            CreateNewElement(item);
-        }
-    }
-
-    void Delete()
-    {
-        foreach (Transform child in panelParent)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
-    void CreateNewElement(ArObject ARObj)
-    {
-        GameObject instance = Instantiate(prefab, panelParent);
+        GameObject instance = Instantiate(prefab, parent);
         instance.GetComponentInChildren<TextMeshProUGUI>().text = ARObj.name;
 
         SelectUIButton button = instance.AddComponent<SelectUIButton>();
         button.ARObject = ARObj;
         instance.GetComponentInChildren<Button>().onClick.AddListener(button.ClickArObj);
-    }
-
-    public void ChangeCategory(Category category)
-    {
-        selectedCategory = category;
-        Delete();
-        Populate();
     }
 }

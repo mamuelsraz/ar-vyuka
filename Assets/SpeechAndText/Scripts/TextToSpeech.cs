@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Events;
 
 namespace TextSpeech
 {
@@ -35,7 +36,9 @@ namespace TextSpeech
         #endregion
 
         public Action onStartCallBack;
+        public UnityEvent onStartEvent;
         public Action onDoneCallback;
+        public UnityEvent onDoneEvent;
         public Action<string> onSpeakRangeCallback;
 
         [Range(0.5f, 2)]
@@ -87,11 +90,14 @@ namespace TextSpeech
         {
             if (onStartCallBack != null)
                 onStartCallBack();
+            onStartEvent.Invoke();
         }
         public void onDone(string _message)
         {
             if (onDoneCallback != null)
                 onDoneCallback();
+
+            onDoneEvent.Invoke();
         }
         public void onError(string _message)
         {

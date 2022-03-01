@@ -1,0 +1,8 @@
+﻿------ Build started: Project: Assembly-CSharp-firstpass, Configuration: Debug Any CPU ------
+------ Build started: Project: Assembly-CSharp, Configuration: Debug Any CPU ------
+D:\42079\Projects\_Github\ar-vyuka\Assets\Scripts\ArImagePlaceHandler.cs(41,61): warning CS0642: Possible mistaken empty statement
+D:\42079\Projects\_Github\ar-vyuka\Assets\Scripts\LookModeHandler.cs(17,28): warning CS0649: Field 'LookModeHandler.rotationSpeed' is never assigned to, and will always have its default value 0
+D:\42079\Projects\_Github\ar-vyuka\Assets\Scripts\ARPlaceHandler.cs(14,33): warning CS0649: Field 'ARPlaceHandler.placementIndicator' is never assigned to, and will always have its default value null
+D:\42079\Projects\_Github\ar-vyuka\Assets\Scripts\ARPlaceHandler.cs(15,29): warning CS0649: Field 'ARPlaceHandler.placeButton' is never assigned to, and will always have its default value null
+D:\42079\Projects\_Github\ar-vyuka\Assets\Scripts\UIObjectPopulator.cs(19,14): warning CS0414: The field 'UIObjectPopulator.selectedCategory' is assigned but its value is never used
+========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========

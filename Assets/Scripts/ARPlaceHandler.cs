@@ -64,8 +64,6 @@ public class ARPlaceHandler : MonoBehaviour
 
         if (placementPoseIsValid)
         {
-            Debug.Log($"{placementPose.position}");
-
             placementPose = s_Hits[0].pose;
 
             var cameraForward = Camera.current.transform.forward;

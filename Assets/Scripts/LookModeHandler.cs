@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TextSpeech;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class LookModeHandler : MonoBehaviour
 {
@@ -11,12 +13,27 @@ public class LookModeHandler : MonoBehaviour
     TextToSpeech TTSManager;
 
     public TextMeshProUGUI nameText;
+    public Image loadingImage;
+    [SerializeField] float rotationSpeed;
+
+    bool loading;
 
     private void Start()
     {
         TTSManager = TextToSpeech.instance;
         nameText.text = "";
+        TextToSpeech.instance.onDoneEvent.AddListener(StopLoading);
+        AppManager.instance.OnStateExit.AddListener(ExitLookMode);
     }
+
+    private void Update()
+    {
+        if (loading)
+        {
+            loadingImage.transform.eulerAngles = new Vector3(0, 0, loadingImage.transform.eulerAngles.z + rotationSpeed * Time.deltaTime);
+        }
+    }
+
     public void PlaySound(string language)
     {
         ArObjectInstance obj = AppManager.currentArObjectInstance;
@@ -31,6 +48,8 @@ public class LookModeHandler : MonoBehaviour
                 TTSManager.Setting(language, TTSManager.pitch, TTSManager.rate);
 
                 TTSManager.StartSpeak(name);
+
+                StartLoading();
             }
         }
         else
@@ -39,9 +58,27 @@ public class LookModeHandler : MonoBehaviour
         }
     }
 
-    public void ExitLookMode()
+    void StartLoading()
     {
-        Destroy(AppManager.currentArObjectInstance.instance.gameObject);
-        AppManager.currentArObjectInstance = null;
+        loadingImage.DOFade(0.5f, UIAppPanel.UISpeed);
+        loading = true;
+    }
+
+    void StopLoading()
+    {
+        loadingImage.DOFade(0.0f, UIAppPanel.UISpeed);
+        loading = false;
+    }
+
+    void ExitLookMode(AppState current, AppState last)
+    {
+        Debug.Log($"{current} != {last}");
+
+        if (current == AppState.LookState)
+        {
+            Destroy(AppManager.currentArObjectInstance.instance.gameObject);
+            AppManager.currentArObjectInstance = null;
+            nameText.text = "";
+        }
     }
 }
