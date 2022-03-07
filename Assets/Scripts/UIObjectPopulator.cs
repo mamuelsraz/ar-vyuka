@@ -17,7 +17,7 @@ public class UIObjectPopulator : MonoBehaviour
 
     private void Start()
     {
-        ObjectLoadHandler.LoadFromResources();
+        ObjectLoadHandler.LoadListFromResources();
         InitCategories();
     }
 

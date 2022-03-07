@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 82414654
+CRC: 3321982704
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -9,14 +9,7 @@ AssetBundleManifest:
       Name: monet
       Dependencies: {}
     Info_2:
-      Name: something
-      Dependencies:
-        Dependency_0: duck
-    Info_3:
-      Name: swan
-      Dependencies:
-        Dependency_0: duck
-    Info_4:
       Name: list
       Dependencies:
         Dependency_0: duck
+        Dependency_1: monet

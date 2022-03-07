@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1348980298
+CRC: 3782603557
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5affc5e14e4c25153ec274eb7545d0dc
+    Hash: 846e03833d37d9f48fa6af731d5ff6bb
   TypeTreeHash:
     serializedVersion: 2
     Hash: 92cf93cd9d57acc6b2d3f96498557ad9
@@ -21,6 +21,10 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: NameInLanguage
 Assets:
+- Assets/Resources/ARObjects/swan.asset
+- Assets/Resources/ARObjects/something.asset
+- Assets/Resources/ARObjects/monet.asset
 - Assets/Resources/ARObjects/duck.asset
 Dependencies:
 - D:/42079/Projects/_Github/ar-vyuka/Assets/Bundles/duck
+- D:/42079/Projects/_Github/ar-vyuka/Assets/Bundles/monet
