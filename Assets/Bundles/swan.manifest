@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 469352447
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2ffa3dac0bd50461628f174303bced11
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 92cf93cd9d57acc6b2d3f96498557ad9
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Category
+- AssemblyName: Assembly-CSharp
+  ClassName: NameInLanguage
+Assets:
+- Assets/Resources/ARObjects/swan.asset
+Dependencies:
+- D:/42079/Projects/_Github/ar-vyuka/Assets/Bundles/duck

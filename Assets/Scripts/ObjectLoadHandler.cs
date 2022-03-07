@@ -7,6 +7,8 @@ public class ObjectLoadHandler : MonoBehaviour
 {
     public static Dictionary<Category, List<ArObject>> AllObjects = new Dictionary<Category, List<ArObject>>();
 
+    static string url = "";
+
     private void Awake()
     {
         //download from web next
@@ -31,5 +33,15 @@ public class ObjectLoadHandler : MonoBehaviour
         }
 
         return AllObjects;
+    }
+
+    public static Dictionary<Category, List<ArObject>> LoadFromURL()
+    {
+        return LoadFromURL(url);
+    }
+
+    public static Dictionary<Category, List<ArObject>> LoadFromURL(string url)
+    {
+        return null;
     }
 }

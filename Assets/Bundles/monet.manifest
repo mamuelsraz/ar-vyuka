@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+CRC: 3898480436
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0e609f9ae11b07bb1ea95d931fe63ebf
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a04041604ba8161bb3a65034223c08d4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Category
+- AssemblyName: Assembly-CSharp
+  ClassName: NameInLanguage
+Assets:
+- Assets/Resources/ARObjects/monet.asset
+Dependencies: []
