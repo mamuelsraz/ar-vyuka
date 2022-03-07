@@ -1,13 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "New AR object", menuName = "AR/ArObject", order = 1)]
 public class ArObject : ScriptableObject
 {
     public GameObject obj;
     public Category category;
+    public string BundleName;
+    [Space(20)]
     public NameInLanguage[] NamesInLanguages;
+
+    /*public void GetBundleName()
+    {
+        string assetPath = AssetDatabase.GetAssetPath(Selection.activeInstanceID);
+        AssetImporter.GetAtPath(assetPath).SetAssetBundleNameAndVariant("testBundle", "");
+    }*/
 }
+
 
 [System.Serializable]
 public class NameInLanguage
@@ -27,8 +37,9 @@ public class NameInLanguage
     }
 }
 
+[System.Serializable]
 [SerializeField]
-public enum Category 
+public enum Category
 {
     food,
     animals,

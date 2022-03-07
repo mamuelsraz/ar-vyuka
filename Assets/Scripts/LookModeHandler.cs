@@ -24,6 +24,9 @@ public class LookModeHandler : MonoBehaviour
         nameText.text = "";
         TextToSpeech.instance.onDoneEvent.AddListener(StopLoading);
         AppManager.instance.OnStateExit.AddListener(ExitLookMode);
+
+        TTSManager.rate = 1;
+        TTSManager.pitch = 1;
     }
 
     private void Update()
@@ -46,7 +49,6 @@ public class LookModeHandler : MonoBehaviour
             {
                 nameText.text = name;
                 TTSManager.Setting(language, TTSManager.pitch, TTSManager.rate);
-
                 TTSManager.StartSpeak(name);
 
                 StartLoading();
@@ -72,8 +74,6 @@ public class LookModeHandler : MonoBehaviour
 
     void ExitLookMode(AppState current, AppState last)
     {
-        Debug.Log($"{current} != {last}");
-
         if (current == AppState.LookState)
         {
             Destroy(AppManager.currentArObjectInstance.instance.gameObject);

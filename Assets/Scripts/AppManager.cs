@@ -20,6 +20,7 @@ public class AppManager : MonoBehaviour
     [HideInInspector]
     public OnStateEnterEvent OnStateExit;
 
+    private AppState lastState;
     private AppState currentState;
     public AppState CurrenState
     {
@@ -28,11 +29,17 @@ public class AppManager : MonoBehaviour
         {
             if (currentState != value)
             {
+                lastState = currentState;
                 OnStateExit.Invoke(currentState, value);
                 OnStateEnter.Invoke(value, currentState);
                 currentState = value;
             }
         }
+    }
+
+    void ScreenDimensionsChanged()
+    {
+        Debug.Log("ScreenDimensionsChanged");
     }
 
     private void Awake()
@@ -46,8 +53,12 @@ public class AppManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //go back (can't work now cus of LookModeHandler)
+            if (CurrenState == AppState.MenuState) Application.Quit();
+            else
+                CurrenState -= 1;
         }
+
+
     }
 
     public void ChangeState(string state)

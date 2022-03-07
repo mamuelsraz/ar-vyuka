@@ -44,5 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2336039d6191a00468c61364bca2f584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitch: 0.5
-  rate: 0.5
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDoneEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  pitch: 1
+  rate: 1

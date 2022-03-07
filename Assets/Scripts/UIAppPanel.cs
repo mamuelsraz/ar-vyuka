@@ -6,8 +6,6 @@ using UnityEngine;
 public class UIAppPanel : MonoBehaviour
 {
     public AppState targetState;
-    Vector2 ScreenSize;
-
     RectTransform Rtransform;
 
     public static float UISpeed = 0.25f;
@@ -15,8 +13,6 @@ public class UIAppPanel : MonoBehaviour
     private void Start()
     {
         Rtransform = GetComponent<RectTransform>();
-
-        ScreenSize = new Vector2(Screen.width, Screen.height);
 
         if (AppManager.instance.CurrenState == targetState)
         {
@@ -26,6 +22,26 @@ public class UIAppPanel : MonoBehaviour
 
         AppManager.instance.OnStateEnter.AddListener(TryOpen);
         AppManager.instance.OnStateExit.AddListener(TryClose);
+
+        ScreenDimensionsChanger.OnScreenChanged.AddListener(RePlace);
+    }
+
+    void RePlace()
+    {
+        if (AppManager.instance.CurrenState != targetState)
+        {
+            Vector2 pos = new Vector2(GetOutOfBoundsPosition(), 0);
+            Rtransform.anchoredPosition = pos;
+        }
+    }
+
+    float GetOutOfBoundsPosition()
+    {
+        float position;
+        if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) position = Display.main.systemHeight;
+        position = Display.main.systemWidth;
+        Debug.Log($"changing pos: {position}");
+        return position;
     }
 
     void TryOpen(AppState state, AppState lastState)
@@ -42,20 +58,22 @@ public class UIAppPanel : MonoBehaviour
 
     protected virtual void Open(bool isBiggerPriority)
     {
-        Rtransform.anchoredPosition = new Vector2(isBiggerPriority ? ScreenSize.x : ScreenSize.x * -1, 0f)/2;
+        float pos = GetOutOfBoundsPosition();
+        Rtransform.anchoredPosition = new Vector2(isBiggerPriority ? pos : pos * -1, 0f) / 2;
         Rtransform.DOAnchorPos(Vector2.zero, UIAppPanel.UISpeed);
     }
 
     protected virtual void Close(bool isBiggerPriority)
     {
+        float pos = GetOutOfBoundsPosition();
         Rtransform.anchoredPosition = Vector2.zero;
-        Vector2 movePos = new Vector2(isBiggerPriority ? ScreenSize.x : ScreenSize.x * -1, 0f)/2;
+        Vector2 movePos = new Vector2(isBiggerPriority ? pos : pos * -1, 0f) / 2;
         Rtransform.DOAnchorPos(movePos, UIAppPanel.UISpeed);
     }
 
     protected virtual void CloseNow()
     {
-        Rtransform.anchoredPosition = new Vector2(ScreenSize.x * -1, 0f) / 2;
+        Rtransform.anchoredPosition = new Vector2(GetOutOfBoundsPosition() * -1, 0f) / 2;
     }
 
     protected virtual void OpenNow()

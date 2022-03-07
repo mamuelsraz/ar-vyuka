@@ -23,10 +23,6 @@ public class ArImagePlaceHandler : MonoBehaviour
         {
             if (!m_ArTrackedImageManager.enabled)
             {
-                foreach (var item in load.AllObjects[Category.other])
-                {
-                    if (item.NamesInLanguages[0].name == "Impression, Sunrise by Claude Monet") AppManager.currentArObject = item;
-                }
                 m_ArTrackedImageManager.enabled = true;
             }
         }
@@ -40,12 +36,19 @@ public class ArImagePlaceHandler : MonoBehaviour
     {
         if (args.added.Count > 0)
         {
+            var item = args.added[0];
             if (AppManager.currentArObjectInstance == null)
-                PlaceObject(args.added[0].gameObject);
+                PlaceObject(item.gameObject);
+        }
+        if (args.updated.Count > 0)
+        {
+            var item = args.updated[0];
+            if (item.trackingState == TrackingState.Tracking && AppManager.currentArObjectInstance == null)
+                PlaceObject(item.gameObject);
         }
     }
 
-    void PlaceObject(GameObject anchor)
+        void PlaceObject(GameObject anchor)
     {
         GameObject instance = Instantiate(AppManager.currentArObject.obj, anchor.transform);
 
@@ -56,5 +59,16 @@ public class ArImagePlaceHandler : MonoBehaviour
         Debug.Log("Placed Object");
 
         AppManager.instance.CurrenState = AppState.LookState;
+    }
+
+    void ExitImagePlaceMode(AppState current, AppState last)
+    {
+        /*if (current == AppState.LookState)
+        {
+            foreach (var item in m_ArTrackedImageManager.trackables)
+            {
+                Destroy(item.gameObject);
+            }
+        }*/
     }
 }

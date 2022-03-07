@@ -5,16 +5,15 @@ using UnityEngine.Events;
 
 public class ObjectLoadHandler : MonoBehaviour
 {
-    public Dictionary<Category, List<ArObject>> AllObjects = new Dictionary<Category, List<ArObject>>();
-
-    public UnityEvent OnLoaded;
+    public static Dictionary<Category, List<ArObject>> AllObjects = new Dictionary<Category, List<ArObject>>();
 
     private void Awake()
     {
+        //download from web next
         LoadFromResources();
     }
 
-    void LoadFromResources()
+    public static Dictionary<Category, List<ArObject>> LoadFromResources()
     {
         ArObject[] loadedObjs = Resources.LoadAll<ArObject>("ARObjects");
 
@@ -31,6 +30,6 @@ public class ObjectLoadHandler : MonoBehaviour
             list.Add(item);
         }
 
-        OnLoaded.Invoke();
+        return AllObjects;
     }
 }

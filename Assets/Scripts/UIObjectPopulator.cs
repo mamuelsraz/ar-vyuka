@@ -8,18 +8,16 @@ using System.Linq;
 
 public class UIObjectPopulator : MonoBehaviour
 {
-    public ObjectLoadHandler loader;
     public Transform panelParent;
     public Transform categoryParent;
     [Space]
     public GameObject prefab;
     public GameObject categoryButtonPrefab;
     public GameObject categoryPanelPrefab;
-    [Space]
-    Category selectedCategory = 0;
 
     private void Start()
     {
+        ObjectLoadHandler.LoadFromResources();
         InitCategories();
     }
 
@@ -27,7 +25,7 @@ public class UIObjectPopulator : MonoBehaviour
     {
         bool first = true;
 
-        foreach (var category in loader.AllObjects)
+        foreach (var category in ObjectLoadHandler.AllObjects)
         {
             //category button
             Button button = Instantiate(categoryButtonPrefab, categoryParent).GetComponent<Button>();
@@ -45,8 +43,6 @@ public class UIObjectPopulator : MonoBehaviour
             foreach (var item in category.Value)
             {
                 CreateNewElement(item, panel.transform);
-                //fix this!
-                AppManager.currentArObject = item;
             }
         }
     }
@@ -58,6 +54,8 @@ public class UIObjectPopulator : MonoBehaviour
 
         SelectUIButton button = instance.AddComponent<SelectUIButton>();
         button.ARObject = ARObj;
-        instance.GetComponentInChildren<Button>().onClick.AddListener(button.ClickArObj);
+        //not the right way to do it
+        instance.transform.Find("Play").GetComponent<Button>().onClick.AddListener(button.ClickArObj);
+        instance.transform.Find("QRCode").GetComponent<Button>().onClick.AddListener(button.ClickQRObj);
     }
 }

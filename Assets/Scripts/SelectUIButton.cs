@@ -13,4 +13,10 @@ public class SelectUIButton : MonoBehaviour
         AppManager.instance.CurrenState = AppState.PlaceState;
         AppManager.currentArObject = ARObject;
     }
+
+    public void ClickQRObj()
+    {
+        AppManager.instance.CurrenState = AppState.ImagePlaceState;
+        AppManager.currentArObject = ARObject;
+    }
 }
