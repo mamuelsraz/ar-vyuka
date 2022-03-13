@@ -40,7 +40,6 @@ public class UIAppPanel : MonoBehaviour
         float position;
         if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight) position = Display.main.systemHeight;
         position = Display.main.systemWidth;
-        Debug.Log($"changing pos: {position}");
         return position;
     }
 

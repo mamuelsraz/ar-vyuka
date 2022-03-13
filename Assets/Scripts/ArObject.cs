@@ -10,12 +10,6 @@ public class ArObject : ScriptableObject
     public string BundleName;
     [Space(20)]
     public NameInLanguage[] NamesInLanguages;
-
-    /*public void GetBundleName()
-    {
-        string assetPath = AssetDatabase.GetAssetPath(Selection.activeInstanceID);
-        AssetImporter.GetAtPath(assetPath).SetAssetBundleNameAndVariant("testBundle", "");
-    }*/
 }
 
 

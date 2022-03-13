@@ -16,7 +16,6 @@ public class ScreenDimensionsChanger : MonoBehaviour
 
     private void OnRectTransformDimensionsChange()
     {
-        Debug.Log($"dimensions changed {Screen.width} {Screen.height}");
-        OnScreenChanged.Invoke();
+        OnScreenChanged?.Invoke();
     }
 }

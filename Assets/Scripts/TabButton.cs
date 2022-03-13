@@ -11,6 +11,9 @@ public class TabButton : MonoBehaviour
     public string tabGroup;
     public GameObject tab;
     public static Dictionary<string, List<TabButton>> tabs;
+    [Header("Effects")]
+    public TabButtonEffect effect;
+    public Image image;
 
     Button button;
 
@@ -44,11 +47,41 @@ public class TabButton : MonoBehaviour
             button.Deselect();
         }
 
+        PlayEffect(true);
         tab.SetActive(true);
     }
 
     public void Deselect()
     {
+        PlayEffect(false);
         tab.SetActive(false);
     }
+
+    void PlayEffect(bool open)
+    {
+        switch (effect)
+        {
+            case TabButtonEffect.None:
+                break;
+            case TabButtonEffect.ShadowButton:
+                if (open)
+                {
+                    image.color = new Color(0.9f, 0.9f, 0.9f);
+                }
+                else
+                {
+                    image.color = new Color(0, 0, 0, 0);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+[SerializeField]
+public enum TabButtonEffect
+{
+    None,
+    ShadowButton
 }

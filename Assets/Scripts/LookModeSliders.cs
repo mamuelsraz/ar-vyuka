@@ -16,11 +16,11 @@ public class LookModeSliders : MonoBehaviour
 
     void OnScaleChanged(float value)
     {
-        AppManager.currentArObjectInstance.instance.transform.localScale = Vector3.one * value;
+        AppManager.instance.currentArObjectInstance.instance.transform.localScale = Vector3.one * value;
     }
 
     void OnRotationChanged(float value)
     {
-        AppManager.currentArObjectInstance.instance.transform.localEulerAngles = new Vector3(0, value, 0);
+        AppManager.instance.currentArObjectInstance.instance.transform.localEulerAngles = new Vector3(0, value, 0);
     }
 }

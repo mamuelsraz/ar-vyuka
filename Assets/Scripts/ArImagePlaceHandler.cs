@@ -37,38 +37,27 @@ public class ArImagePlaceHandler : MonoBehaviour
         if (args.added.Count > 0)
         {
             var item = args.added[0];
-            if (AppManager.currentArObjectInstance == null)
+            if (AppManager.instance.currentArObjectInstance == null)
                 PlaceObject(item.gameObject);
         }
         if (args.updated.Count > 0)
         {
             var item = args.updated[0];
-            if (item.trackingState == TrackingState.Tracking && AppManager.currentArObjectInstance == null)
+            if (item.trackingState == TrackingState.Tracking && AppManager.instance.currentArObjectInstance == null)
                 PlaceObject(item.gameObject);
         }
     }
 
-        void PlaceObject(GameObject anchor)
+    void PlaceObject(GameObject anchor)
     {
-        GameObject instance = Instantiate(AppManager.currentArObject.obj, anchor.transform);
+        GameObject instance = Instantiate(AppManager.instance.currentArObject.obj, anchor.transform);
 
         instance.transform.localPosition = Vector3.zero;
         instance.transform.localRotation = Quaternion.identity;
-        AppManager.currentArObjectInstance = new ArObjectInstance(instance, AppManager.currentArObject);
+        AppManager.instance.CreateNewARObjectInstance(instance, AppManager.instance.currentArObject);
 
         Debug.Log("Placed Object");
 
         AppManager.instance.CurrenState = AppState.LookState;
-    }
-
-    void ExitImagePlaceMode(AppState current, AppState last)
-    {
-        /*if (current == AppState.LookState)
-        {
-            foreach (var item in m_ArTrackedImageManager.trackables)
-            {
-                Destroy(item.gameObject);
-            }
-        }*/
     }
 }

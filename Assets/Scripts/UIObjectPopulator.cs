@@ -17,11 +17,10 @@ public class UIObjectPopulator : MonoBehaviour
 
     private void Start()
     {
-        ObjectLoadHandler.LoadListFromResources();
-        InitCategories();
+
     }
 
-    void InitCategories()
+    public void InitCategories()
     {
         bool first = true;
 
@@ -33,7 +32,7 @@ public class UIObjectPopulator : MonoBehaviour
             GameObject panel = Instantiate(categoryPanelPrefab, panelParent);
 
             button.GetComponentInChildren<TextMeshProUGUI>().text = category.Key.ToString();
-            TabButton tabButton = button.gameObject.AddComponent<TabButton>();
+            TabButton tabButton = button.gameObject.GetComponent<TabButton>();
             tabButton.tabGroup = "category";
             tabButton.tab = panel;
 

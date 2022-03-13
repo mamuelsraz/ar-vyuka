@@ -39,9 +39,9 @@ public class LookModeHandler : MonoBehaviour
 
     public void PlaySound(string language)
     {
-        ArObjectInstance obj = AppManager.currentArObjectInstance;
+        ArObjectInstance obj = AppManager.instance.currentArObjectInstance;
 
-        if (AppManager.currentArObject != null)
+        if (AppManager.instance.currentArObject != null)
         {
             string name = NameInLanguage.Find(obj.ArObj.NamesInLanguages, language);
 
@@ -76,8 +76,8 @@ public class LookModeHandler : MonoBehaviour
     {
         if (current == AppState.LookState)
         {
-            Destroy(AppManager.currentArObjectInstance.instance.gameObject);
-            AppManager.currentArObjectInstance = null;
+            Destroy(AppManager.instance.currentArObjectInstance.instance.gameObject);
+            AppManager.instance.DestroyCurrentArObjInstance();
             nameText.text = "";
         }
     }

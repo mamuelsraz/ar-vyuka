@@ -36,6 +36,16 @@ public class ARPlaceHandler : MonoBehaviour
     {
         if (AppManager.instance.CurrenState == AppState.PlaceState)
         {
+
+#if UNITY_EDITOR
+            GameObject instance = Instantiate(AppManager.instance.currentArObject.obj);
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+            AppManager.instance.CreateNewARObjectInstance(instance, AppManager.instance.currentArObject);
+
+            AppManager.instance.CurrenState = AppState.LookState;
+#endif
+
             if (!placementIndicator.activeSelf) placementIndicator.SetActive(true);
 
             UpdatePlacementPose();
@@ -101,10 +111,10 @@ public class ARPlaceHandler : MonoBehaviour
         {
             m_AnchorPoints.Add(anchor);
 
-            GameObject instance = Instantiate(AppManager.currentArObject.obj, anchor.transform);
+            GameObject instance = Instantiate(AppManager.instance.currentArObject.obj, anchor.transform);
             instance.transform.localPosition = Vector3.zero;
             instance.transform.localRotation = Quaternion.identity;
-            AppManager.currentArObjectInstance = new ArObjectInstance(instance, AppManager.currentArObject);
+            AppManager.instance.CreateNewARObjectInstance(instance, AppManager.instance.currentArObject);
 
             AppManager.instance.CurrenState = AppState.LookState;
         }

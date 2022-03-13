@@ -7,11 +7,11 @@ using UnityEngine.Networking;
 public class ObjectLoadHandler : MonoBehaviour
 {
     public static Dictionary<Category, List<ArObject>> AllObjects = new Dictionary<Category, List<ArObject>>();
-    public static UnityEvent OnLoaded;
+    public UnityEvent OnLoaded;
     public static ObjectLoadHandler instance;
 
     //Musíme udelat novou branch!!
-    string url = "https://github.com/mamuelsraz/ar-vyuka/blob/main/Assets/Bundles/";
+    string url = "https://mamuelsraz.github.io/bundles/";
     string listName = "list";
 
     private void Awake()
@@ -19,15 +19,16 @@ public class ObjectLoadHandler : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(this);
 
-        //download from web next
-        LoadListFromResources();
+        LoadListFromURL();
     }
 
-    public static Dictionary<Category, List<ArObject>> LoadListFromResources()
+    public Dictionary<Category, List<ArObject>> LoadListFromResources()
     {
         ArObject[] loadedObjs = Resources.LoadAll<ArObject>("ARObjects");
 
         AllObjects = LoadList(loadedObjs);
+
+        OnLoaded?.Invoke();
 
         return AllObjects;
     }
@@ -38,7 +39,7 @@ public class ObjectLoadHandler : MonoBehaviour
         
         foreach (var item in loadedObjs)
         {
-            Debug.Log($"loaded: {item.category} {item.NamesInLanguages[0].name}");
+            Debug.Log($"loaded: {item.NamesInLanguages[0].name} from {item.category}");
 
             if (!AllObjects.ContainsKey(item.category))
             {
@@ -54,7 +55,8 @@ public class ObjectLoadHandler : MonoBehaviour
 
     public void LoadListFromURL()
     {
-        LoadListFromURL(url);
+        LoadListFromResources();
+        //LoadListFromURL(url);
     }
 
     public void LoadListFromURL(string url)
@@ -88,7 +90,7 @@ public class ObjectLoadHandler : MonoBehaviour
                     AllObjects = LoadList(loadedObjects);
                     bundle.Unload(false);
 
-                    OnLoaded.Invoke();
+                    OnLoaded?.Invoke();
                 }
                 else 
                 {
