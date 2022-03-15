@@ -76,7 +76,6 @@ public class LookModeHandler : MonoBehaviour
     {
         if (current == AppState.LookState)
         {
-            Destroy(AppManager.instance.currentArObjectInstance.instance.gameObject);
             AppManager.instance.DestroyCurrentArObjInstance();
             nameText.text = "";
         }

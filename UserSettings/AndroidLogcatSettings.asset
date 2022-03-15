@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "104d78890411",
     "m_SelectedPackage": {
-        "deviceId": "104d78890411",
-        "name": "com.DefaultCompany.arvyuka",
-        "processId": 12694,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,139 +11,37 @@
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 4134,
+            "processId": 20559,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 5727,
+            "processId": 21348,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 27902,
+            "processId": 22404,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 28651,
+            "processId": 22966,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 29491,
+            "processId": 23666,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 29931,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 32060,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 1323,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 2381,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 3210,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 3894,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 18641,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 20200,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 24824,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 26127,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 1710,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 2663,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 7946,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 8437,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 8955,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 9460,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 9984,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 12694,
+            "processId": 24519,
             "exited": false
         }
     ],

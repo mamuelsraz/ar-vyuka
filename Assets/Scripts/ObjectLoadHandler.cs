@@ -7,7 +7,8 @@ using UnityEngine.Networking;
 public class ObjectLoadHandler : MonoBehaviour
 {
     public static Dictionary<Category, List<ArObject>> AllObjects = new Dictionary<Category, List<ArObject>>();
-    public UnityEvent OnLoaded;
+    public UnityEvent OnLoadedList;
+    public UnityEvent OnLoadedArObj;
     public static ObjectLoadHandler instance;
 
     //Musíme udelat novou branch!!
@@ -28,7 +29,7 @@ public class ObjectLoadHandler : MonoBehaviour
 
         AllObjects = LoadList(loadedObjs);
 
-        OnLoaded?.Invoke();
+        OnLoadedList?.Invoke();
 
         return AllObjects;
     }
@@ -36,7 +37,7 @@ public class ObjectLoadHandler : MonoBehaviour
     static Dictionary<Category, List<ArObject>> LoadList(ArObject[] loadedObjs)
     {
         Dictionary<Category, List<ArObject>> AllObjects = new Dictionary<Category, List<ArObject>>();
-        
+
         foreach (var item in loadedObjs)
         {
             Debug.Log($"loaded: {item.NamesInLanguages[0].name} from {item.category}");
@@ -56,15 +57,58 @@ public class ObjectLoadHandler : MonoBehaviour
     public void LoadListFromURL()
     {
         LoadListFromResources();
-        //LoadListFromURL(url);
+        //StartCoroutine(GetListRoutine());
     }
 
-    public void LoadListFromURL(string url)
+    public void LoadArObjFromUrl(string bundleName)
     {
-        StartCoroutine(GetDisplayBundleRoutine());
+        Debug.Log(bundleName);
+
+        StartCoroutine(GetArObjRoutine(bundleName));
     }
 
-    IEnumerator GetDisplayBundleRoutine()
+    IEnumerator GetArObjRoutine(string bundleName)
+    {
+        string bundleURL = url + bundleName;
+
+        Debug.Log("Requesting bundle at " + bundleURL);
+
+        //request asset bundle
+        UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(bundleURL);
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
+        {
+            Debug.Log("Network error");
+        }
+        else
+        {
+            AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
+            if (bundle != null)
+            {
+                Object[] loadedObjects = bundle.LoadAllAssets();
+
+                if (loadedObjects.Length > 0)
+                {
+                    //bundle.Unload(false);
+
+                    Debug.Log($"Assets for bundle {bundleName} successfully loaded");
+
+                    OnLoadedArObj?.Invoke();
+                }
+                else
+                {
+                    Debug.Log("no assets of type ArObject in bundle");
+                }
+            }
+            else
+            {
+                Debug.Log("Not a valid asset bundle");
+            }
+        }
+    }
+
+    IEnumerator GetListRoutine()
     {
 
         string bundleURL = url + listName;
@@ -90,9 +134,9 @@ public class ObjectLoadHandler : MonoBehaviour
                     AllObjects = LoadList(loadedObjects);
                     bundle.Unload(false);
 
-                    OnLoaded?.Invoke();
+                    OnLoadedList?.Invoke();
                 }
-                else 
+                else
                 {
                     Debug.Log("no assets of type ArObject in bundle");
                 }

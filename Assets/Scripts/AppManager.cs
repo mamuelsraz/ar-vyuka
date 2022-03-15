@@ -17,7 +17,8 @@ public class AppManager : MonoBehaviour
         get;
         private set;
     }
-    public List<ArObjectInstance> CachedInstances;
+
+    List<ArObjectInstance> CachedInstances;
 
     public ArObject currentArObject;
     public ARSession session;
@@ -86,19 +87,49 @@ public class AppManager : MonoBehaviour
     public void DestroyCurrentArObjInstance()
     {
         OnDeletedArObjInstance?.Invoke();
+        if (currentArObjectInstance != null)
+            currentArObjectInstance.instance.SetActive(false);
+
         currentArObjectInstance = null;
     }
 
-    public void CreateNewARObjectInstance(GameObject obj, ArObject arObj)
+    public void CreateNewARObjectInstance(ArObject arObj, Transform parent)
     {
-        ArObjectInstance instance = new ArObjectInstance(obj, arObj);
-        if (instance != currentArObjectInstance)
+        foreach (var item in CachedInstances)
         {
-            Debug.Log("new instance set");
-            OnDeletedArObjInstance.Invoke();
-            currentArObjectInstance = instance;
-            OnNewArObjInstance.Invoke();
+            if (item.ArObj == arObj)
+            {
+                item.instance.transform.parent = parent;
+                item.instance.transform.localPosition = Vector3.zero;
+                item.instance.transform.localRotation = Quaternion.identity;
+                item.instance.SetActive(true);
+
+                Debug.Log("instance already cached: enabling it");
+
+                DestroyCurrentArObjInstance();
+                currentArObjectInstance = item;
+
+                OnNewArObjInstance.Invoke();
+
+                return;
+            }
         }
+
+        GameObject obj = Instantiate(arObj.obj, parent);
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localRotation = Quaternion.identity;
+        obj.SetActive(true);
+
+        ArObjectInstance instance = new ArObjectInstance(obj, arObj);
+
+        Debug.Log("new instance created");
+
+        DestroyCurrentArObjInstance();
+        currentArObjectInstance = instance;
+
+        OnNewArObjInstance.Invoke();
+
+        CachedInstances.Add(instance);
     }
 }
 

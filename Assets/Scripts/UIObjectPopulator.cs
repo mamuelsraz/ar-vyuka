@@ -15,11 +15,6 @@ public class UIObjectPopulator : MonoBehaviour
     public GameObject categoryButtonPrefab;
     public GameObject categoryPanelPrefab;
 
-    private void Start()
-    {
-
-    }
-
     public void InitCategories()
     {
         bool first = true;

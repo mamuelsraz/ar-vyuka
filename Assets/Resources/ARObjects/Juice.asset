@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
   m_Name: Juice
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  obj: {fileID: 1151290577568868753, guid: 30c61130898d27a459ae2f30b40e51b8, type: 3}
   category: 0
   BundleName: 
-  NamesInLanguages: []
+  NamesInLanguages:
+  - name: Juice
+    language: en-EN
+  - name: Jus
+    language: fr-FR

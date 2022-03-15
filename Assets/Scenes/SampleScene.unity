@@ -8910,6 +8910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35f07d8ea953c54c914ae2f0f84a7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentArObject: {fileID: 0}
   session: {fileID: 40919616}
   ARSessionEnabled: 020000000400000003000000
   OnStateEnter:
@@ -8951,7 +8952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81aa5e5a95bef2f468f2a8003e98ca11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnLoaded:
+  OnLoadedList:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 478584412}
@@ -8966,6 +8967,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnLoadedArObj:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2043309068
 GameObject:
   m_ObjectHideFlags: 0

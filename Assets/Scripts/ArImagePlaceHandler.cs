@@ -50,12 +50,8 @@ public class ArImagePlaceHandler : MonoBehaviour
 
     void PlaceObject(GameObject anchor)
     {
-        GameObject instance = Instantiate(AppManager.instance.currentArObject.obj, anchor.transform);
-
-        instance.transform.localPosition = Vector3.zero;
-        instance.transform.localRotation = Quaternion.identity;
-        AppManager.instance.CreateNewARObjectInstance(instance, AppManager.instance.currentArObject);
-
+        AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, anchor.transform);
+        
         Debug.Log("Placed Object");
 
         AppManager.instance.CurrenState = AppState.LookState;

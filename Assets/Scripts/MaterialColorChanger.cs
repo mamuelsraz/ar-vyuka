@@ -21,6 +21,7 @@ public class MaterialColorChanger : MonoBehaviour
         affectedMeshes = new List<MeshRenderer>();
         defaultMaterials = new List<Material>();
 
+        Debug.Log(AppManager.instance.currentArObjectInstance);
         foreach (var item in AppManager.instance.currentArObjectInstance.instance.GetComponentsInChildren<MeshRenderer>())
         {
             if (item.tag == tagName)
