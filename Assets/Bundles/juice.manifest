@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 3110398321
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a4239b517c7fcbad6d4a4c929c59728c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1fa84518f4804b69599d859838526740
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/Juice.prefab
+- Assets/Textures/Juice/Juice_None_BaseColor.png
+- Assets/Textures/Juice/Juice_None_Roughness.png
+- Assets/Textures/Juice/Juice_None_Metallic.png
+- Assets/Textures/Juice/ASM - PBR Metallic Roughness_Opacity.png
+Dependencies: []

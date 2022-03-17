@@ -1,0 +1,15 @@
+ManifestFileVersion: 0
+CRC: 2697355590
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: list
+      Dependencies:
+        Dependency_0: backpack
+        Dependency_1: juice
+    Info_1:
+      Name: backpack
+      Dependencies: {}
+    Info_2:
+      Name: juice
+      Dependencies: {}

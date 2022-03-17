@@ -37,5 +37,6 @@ public enum Category
 {
     food,
     animals,
-    other
+    other,
+    accessories
 }
