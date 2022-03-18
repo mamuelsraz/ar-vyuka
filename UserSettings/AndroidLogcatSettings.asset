@@ -1,25 +1,13 @@
 {
     "m_SelectedDeviceId": "104d78890411",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "104d78890411",
+        "name": "com.DefaultCompany.arvyuka",
+        "processId": 21521,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 20559,
-            "exited": true
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 21348,
-            "exited": true
-        },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
@@ -42,6 +30,24 @@
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
             "processId": 24519,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 13879,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.miui.home",
+            "processId": 1823,
+            "exited": false
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 21521,
             "exited": false
         }
     ],

@@ -18,7 +18,7 @@ public class AppManager : MonoBehaviour
         private set;
     }
 
-    List<ArObjectInstance> CachedInstances;
+    public List<ArObjectInstance> CachedInstances;
 
     public ArObject currentArObject;
     public ARSession session;

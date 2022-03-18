@@ -34,15 +34,15 @@ public class SelectUIButton : MonoBehaviour
     {
         clickedQR = false;
         AppManager.instance.currentArObject = ARObject;
-        //ObjectLoadHandler.instance.LoadArObjFromUrl(ARObject.BundleName);
-        ObjectLoadHandler.instance.OnLoadedArObj.Invoke();
+        ObjectLoadHandler.instance.LoadArObjFromUrl(ARObject);
+        //ObjectLoadHandler.instance.OnLoadedArObj.Invoke();
     }
 
     public void ClickQRObj()
     {
         clickedQR = true;
         AppManager.instance.currentArObject = ARObject;
-        ObjectLoadHandler.instance.OnLoadedArObj.Invoke();
-        //ObjectLoadHandler.instance.LoadArObjFromUrl(ARObject.BundleName);
+        //ObjectLoadHandler.instance.OnLoadedArObj.Invoke();
+        ObjectLoadHandler.instance.LoadArObjFromUrl(ARObject);
     }
 }

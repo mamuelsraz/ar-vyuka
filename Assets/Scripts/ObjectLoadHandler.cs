@@ -11,12 +11,15 @@ public class ObjectLoadHandler : MonoBehaviour
     public UnityEvent OnLoadedArObj;
     public static ObjectLoadHandler instance;
 
+    List<GameObject> gameObjectsInMemory;
+
     //Musíme udelat novou branch!!
-    string url = "https://mamuelsraz.github.io/bundles/";
+    string url = "https://mamuelsraz.github.io/ar-vyuka/Assets/Bundles/";
     string listName = "list";
 
     private void Awake()
     {
+        gameObjectsInMemory = new List<GameObject>();
         if (instance == null) instance = this;
         else Destroy(this);
 
@@ -56,15 +59,21 @@ public class ObjectLoadHandler : MonoBehaviour
 
     public void LoadListFromURL()
     {
-        LoadListFromResources();
-        //StartCoroutine(GetListRoutine());
+        //LoadListFromResources();
+        StartCoroutine(GetListRoutine());
     }
 
-    public void LoadArObjFromUrl(string bundleName)
+    public void LoadArObjFromUrl(ArObject arObject)
     {
-        Debug.Log(bundleName);
-
-        StartCoroutine(GetArObjRoutine(bundleName));
+        foreach (var obj in AppManager.instance.CachedInstances)
+        {
+            if (obj.ArObj.BundleName == arObject.BundleName)
+            {
+                OnLoadedArObj.Invoke();
+                return;
+            }
+        }
+        StartCoroutine(GetArObjRoutine(arObject.BundleName));
     }
 
     IEnumerator GetArObjRoutine(string bundleName)
@@ -86,10 +95,12 @@ public class ObjectLoadHandler : MonoBehaviour
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
             if (bundle != null)
             {
-                Object[] loadedObjects = bundle.LoadAllAssets();
+                GameObject[] loadedObjects = bundle.LoadAllAssets<GameObject>();
 
                 if (loadedObjects.Length > 0)
                 {
+                    gameObjectsInMemory.AddRange(loadedObjects);
+
                     //bundle.Unload(false);
 
                     Debug.Log($"Assets for bundle {bundleName} successfully loaded");

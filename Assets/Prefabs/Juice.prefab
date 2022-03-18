@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 6997114146475015290}
   m_Layer: 0
   m_Name: Cylinder.001
-  m_TagString: Untagged
+  m_TagString: MaterialChange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
