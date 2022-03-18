@@ -13,7 +13,7 @@ public class CreateAssetBundles
         }
         BuildPipeline.BuildAssetBundles(assetBundleDirectory,
                                         BuildAssetBundleOptions.UncompressedAssetBundle,
-                                        BuildTarget.Android);
+                                        BuildTarget.StandaloneWindows);
     }
 
     [MenuItem("Tools/Create/AssetBundles for Android")]
