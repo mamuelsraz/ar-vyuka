@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 7508250853571508736, guid: bbceb7af9c53ad34d84d1aa1e88f7855, type: 3}
   category: 2
-  BundleName: 
+  BundleName: backpack
   NamesInLanguages:
   - name: Backpack
     language: en-EN

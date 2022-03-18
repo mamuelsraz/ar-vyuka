@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1151290577568868753, guid: 30c61130898d27a459ae2f30b40e51b8, type: 3}
   category: 0
-  BundleName: 
+  BundleName: juice
   NamesInLanguages:
   - name: Juice
     language: en-EN

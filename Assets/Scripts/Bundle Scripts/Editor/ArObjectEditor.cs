@@ -22,6 +22,8 @@ public class ArObjectEditor : Editor
 
     void SetupBundle(ArObject target)
     {
+        EditorUtility.SetDirty(target);
+
         string assetPath = AssetDatabase.GetAssetPath(target.obj.GetInstanceID());
         target.BundleName = AssetImporter.GetAtPath(assetPath).assetBundleName;
 
