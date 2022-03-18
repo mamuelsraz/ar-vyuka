@@ -9,9 +9,10 @@ public class ObjectLoadHandler : MonoBehaviour
     public static Dictionary<Category, List<ArObject>> AllObjects = new Dictionary<Category, List<ArObject>>();
     public UnityEvent OnLoadedList;
     public UnityEvent OnLoadedArObj;
+    public UnityEvent OnErrorArObj;
     public static ObjectLoadHandler instance;
 
-    List<GameObject> gameObjectsInMemory;
+    public List<GameObject> gameObjectsInMemory;
 
     //Musíme udelat novou branch!!
     string url = "https://mamuelsraz.github.io/ar-vyuka/Assets/Bundles/";
@@ -73,6 +74,7 @@ public class ObjectLoadHandler : MonoBehaviour
                 return;
             }
         }
+
         StartCoroutine(GetArObjRoutine(arObject.BundleName));
     }
 
@@ -89,17 +91,19 @@ public class ObjectLoadHandler : MonoBehaviour
         if (www.isNetworkError)
         {
             Debug.Log("Network error");
+            OnErrorArObj.Invoke();
         }
         else
         {
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
             if (bundle != null)
             {
-                GameObject[] loadedObjects = bundle.LoadAllAssets<GameObject>();
+                GameObject loadedObject = bundle.LoadAllAssets<GameObject>()[0];
 
-                if (loadedObjects.Length > 0)
+                if (loadedObject != null)
                 {
-                    gameObjectsInMemory.AddRange(loadedObjects);
+                    gameObjectsInMemory.Add(loadedObject);
+                    AppManager.instance.currentArObject.obj = loadedObject;
 
                     //bundle.Unload(false);
 
@@ -110,11 +114,13 @@ public class ObjectLoadHandler : MonoBehaviour
                 else
                 {
                     Debug.Log("no assets of type ArObject in bundle");
+                    OnErrorArObj.Invoke();
                 }
             }
             else
             {
                 Debug.Log("Not a valid asset bundle");
+                OnErrorArObj.Invoke();
             }
         }
     }

@@ -1,48 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectUIButton : MonoBehaviour
 {
+    public Button downloadButton;
+    public Button playButton;
+    [Space]
     public ArObject ARObject;
     public UIObjectPopulator ui;
     public Category category;
 
-    bool clickedQR;
-
     private void Start()
     {
         ObjectLoadHandler.instance.OnLoadedArObj.AddListener(ObjLoaded);
+        ObjectLoadHandler.instance.OnErrorArObj.AddListener(ObjError);
+        downloadButton.onClick.AddListener(Download);
+        playButton.onClick.AddListener(Play);
+
+        downloadButton.gameObject.SetActive(true);
+        playButton.gameObject.SetActive(false);
     }
 
     void ObjLoaded()
     {
+        downloadButton.gameObject.SetActive(false);
+        playButton.gameObject.SetActive(true);
+    }
+
+    void ObjError()
+    {
+        downloadButton.interactable = true;
+    }
+
+    public void Download()
+    {
+        AppManager.instance.currentArObject = ARObject;
+        downloadButton.interactable = false;
+        ObjectLoadHandler.instance.LoadArObjFromUrl(ARObject);
+    }
+
+    public void Play()
+    {
+        AppManager.instance.currentArObject = ARObject;
         AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, transform);
         AppManager.instance.DestroyCurrentArObjInstance();
 
-        if (clickedQR)
-        {
-            AppManager.instance.CurrenState = AppState.ImagePlaceState;
-        }
-        else
-        {
-            AppManager.instance.CurrenState = AppState.PlaceState;
-        }
-    }
-
-    public void ClickArObj()
-    {
-        clickedQR = false;
-        AppManager.instance.currentArObject = ARObject;
-        ObjectLoadHandler.instance.LoadArObjFromUrl(ARObject);
-        //ObjectLoadHandler.instance.OnLoadedArObj.Invoke();
-    }
-
-    public void ClickQRObj()
-    {
-        clickedQR = true;
-        AppManager.instance.currentArObject = ARObject;
-        //ObjectLoadHandler.instance.OnLoadedArObj.Invoke();
-        ObjectLoadHandler.instance.LoadArObjFromUrl(ARObject);
+        AppManager.instance.CurrenState = AppState.PlaceState;
     }
 }

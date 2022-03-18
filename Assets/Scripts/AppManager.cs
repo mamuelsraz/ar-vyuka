@@ -95,6 +95,11 @@ public class AppManager : MonoBehaviour
 
     public void CreateNewARObjectInstance(ArObject arObj, Transform parent)
     {
+        foreach (var item in ObjectLoadHandler.instance.gameObjectsInMemory)
+        {
+            Debug.LogWarning(item.name);
+        }
+
         foreach (var item in CachedInstances)
         {
             if (item.ArObj == arObj)
