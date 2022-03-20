@@ -7,31 +7,49 @@ public class SelectUIButton : MonoBehaviour
 {
     public Button downloadButton;
     public Button playButton;
-    [Space]
-    public ArObject ARObject;
-    public UIObjectPopulator ui;
-    public Category category;
+    public Button QRButton;
+    
+    [HideInInspector] public ChooseModeQR qrChooseMode;
+    [HideInInspector] public ArObject ARObject;
 
+    bool qrSubbed;
     private void Start()
     {
         ObjectLoadHandler.instance.OnLoadedArObj.AddListener(ObjLoaded);
         ObjectLoadHandler.instance.OnErrorArObj.AddListener(ObjError);
         downloadButton.onClick.AddListener(Download);
         playButton.onClick.AddListener(Play);
+        QRButton.onClick.AddListener(QRToggle);
 
         downloadButton.gameObject.SetActive(true);
         playButton.gameObject.SetActive(false);
+        QRButton.gameObject.SetActive(false);
     }
 
     void ObjLoaded()
     {
         downloadButton.gameObject.SetActive(false);
         playButton.gameObject.SetActive(true);
+        QRButton.gameObject.SetActive(true);
     }
 
     void ObjError()
     {
         downloadButton.interactable = true;
+    }
+
+    public void QRToggle()
+    {
+        if (qrSubbed)
+        {
+            qrChooseMode.UnSubscribe(ARObject);
+        }
+        else
+        {
+            qrChooseMode.Subscribe(ARObject);
+        }
+
+        qrSubbed = !qrSubbed;
     }
 
     public void Download()

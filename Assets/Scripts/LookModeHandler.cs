@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+[RequireComponent(typeof(UIAppPanel))]
 public class LookModeHandler : MonoBehaviour
 {
     //https://github.com/j1mmyto9/Speech-And-Text-Unity-iOS-Android
@@ -16,10 +17,13 @@ public class LookModeHandler : MonoBehaviour
     public Image loadingImage;
     [SerializeField] float rotationSpeed;
 
+    UIAppPanel uiPanel;
     bool loading;
 
     private void Start()
     {
+        uiPanel = GetComponent<UIAppPanel>();
+
         TTSManager = TextToSpeech.instance;
         nameText.text = "";
         TextToSpeech.instance.onDoneEvent.AddListener(StopLoading);
@@ -74,7 +78,7 @@ public class LookModeHandler : MonoBehaviour
 
     void ExitLookMode(AppState current, AppState last)
     {
-        if (current == AppState.LookState)
+        if (current == uiPanel.targetState)
         {
             AppManager.instance.DestroyCurrentArObjInstance();
             nameText.text = "";

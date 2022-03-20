@@ -8,6 +8,7 @@ using System.Linq;
 
 public class UIObjectPopulator : MonoBehaviour
 {
+    public ChooseModeQR qrChooseMode;
     public Transform panelParent;
     public Transform categoryParent;
     [Space]
@@ -48,5 +49,6 @@ public class UIObjectPopulator : MonoBehaviour
 
         SelectUIButton button = instance.GetComponent<SelectUIButton>();
         button.ARObject = ARObj;
+        button.qrChooseMode = qrChooseMode;
     }
 }

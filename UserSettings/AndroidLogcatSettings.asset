@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "104d78890411",
         "name": "com.DefaultCompany.arvyuka",
-        "processId": 23828,
+        "processId": 16541,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -78,6 +78,18 @@
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
             "processId": 23828,
+            "exited": false
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 27110,
+            "exited": false
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 16541,
             "exited": false
         }
     ],

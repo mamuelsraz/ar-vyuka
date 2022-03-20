@@ -146,7 +146,8 @@ public enum AppState
     ChooseState,
     PlaceState,
     ImagePlaceState,
-    LookState
+    LookState,
+    TextLookState
 }
 
 [SerializeField]

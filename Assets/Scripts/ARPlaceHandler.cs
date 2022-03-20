@@ -13,6 +13,7 @@ public class ARPlaceHandler : MonoBehaviour
 {
     [SerializeField] GameObject placementIndicator;
     [SerializeField] Button placeButton;
+    public ArObject specialObjText;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
     List<ARAnchor> m_AnchorPoints;
@@ -36,11 +37,15 @@ public class ARPlaceHandler : MonoBehaviour
     {
         if (AppManager.instance.CurrenState == AppState.PlaceState)
         {
-
 #if UNITY_EDITOR
             AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, null);
 
-            AppManager.instance.CurrenState = AppState.LookState;
+            if (AppManager.instance.currentArObject == specialObjText)
+            {
+                AppManager.instance.CurrenState = AppState.TextLookState;
+            }
+            else
+                AppManager.instance.CurrenState = AppState.LookState;
 #endif
 
             if (!placementIndicator.activeSelf) placementIndicator.SetActive(true);
@@ -83,7 +88,7 @@ public class ARPlaceHandler : MonoBehaviour
     {
         if (placementPoseIsValid)
         {
-            if(!placementIndicator.activeSelf) placementIndicator.SetActive(true);
+            if (!placementIndicator.activeSelf) placementIndicator.SetActive(true);
             placementIndicator.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
         }
         else
@@ -108,10 +113,14 @@ public class ARPlaceHandler : MonoBehaviour
         {
             m_AnchorPoints.Add(anchor);
 
-            Debug.Log(anchor.transform.position);
             AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, anchor.transform);
 
-            AppManager.instance.CurrenState = AppState.LookState;
+            if (AppManager.instance.currentArObject == specialObjText)
+            {
+                AppManager.instance.CurrenState = AppState.TextLookState;
+            }
+            else
+                AppManager.instance.CurrenState = AppState.LookState;
         }
     }
 }

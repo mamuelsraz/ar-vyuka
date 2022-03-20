@@ -14,14 +14,13 @@ public class MaterialColorChanger : MonoBehaviour
     }
 
 
-    void NewArObjInstance()
+    public void NewArObjInstance()
     {
         Debug.Log("searching for materials");
 
         affectedMeshes = new List<MeshRenderer>();
         defaultMaterials = new List<Material>();
 
-        Debug.Log(AppManager.instance.currentArObjectInstance);
         foreach (var item in AppManager.instance.currentArObjectInstance.instance.GetComponentsInChildren<MeshRenderer>())
         {
             if (item.tag == tagName)
