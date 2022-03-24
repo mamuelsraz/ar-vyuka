@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ArImagePlaceHandler : MonoBehaviour
 {
+    public UIImageObjectPopulator SelectedHandler;
+
     ARTrackedImageManager m_ArTrackedImageManager;
 
     // Start is called before the first frame update
@@ -35,16 +38,23 @@ public class ArImagePlaceHandler : MonoBehaviour
     {
         if (args.added.Count > 0)
         {
-            var item = args.added[0];
-            if (AppManager.instance.currentArObjectInstance == null)
-                PlaceObject(item.gameObject);
+            foreach (var item in args.added)
+            {
+                Place(Convert.ToInt32(item.referenceImage.name), item.gameObject);
+            }
         }
-        if (args.updated.Count > 0)
+        /*if (args.updated.Count > 0)
         {
             var item = args.updated[0];
             if (item.trackingState == TrackingState.Tracking && AppManager.instance.currentArObjectInstance == null)
                 PlaceObject(item.gameObject);
-        }
+        }*/
+    }
+
+    void Place(int i, GameObject anchor)
+    {
+        if (i > SelectedHandler.selected.Count) return;
+        AppManager.instance.CreateNewARObjectInstanceNonDestroy(SelectedHandler.selected[i-1], anchor.transform);
     }
 
     void PlaceObject(GameObject anchor)
