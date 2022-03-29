@@ -8,12 +8,14 @@ using UnityEngine.XR.ARSubsystems;
 public class ArImagePlaceHandler : MonoBehaviour
 {
     public UIImageObjectPopulator SelectedHandler;
+    public UIAppPanel uiPanel;
 
     ARTrackedImageManager m_ArTrackedImageManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        AppManager.instance.OnStateExit.AddListener(ExitMode);
         m_ArTrackedImageManager = GetComponent<ARTrackedImageManager>();
         m_ArTrackedImageManager.trackedImagesChanged += OnImagesChanged;
     }
@@ -21,7 +23,7 @@ public class ArImagePlaceHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (AppManager.instance.CurrenState == AppState.ImagePlaceState || AppManager.instance.CurrenState == AppState.LookState)
+        if (AppManager.instance.CurrenState == AppState.ImagePlaceState)
         {
             if (!m_ArTrackedImageManager.enabled)
             {
@@ -43,12 +45,6 @@ public class ArImagePlaceHandler : MonoBehaviour
                 Place(Convert.ToInt32(item.referenceImage.name), item.gameObject);
             }
         }
-        /*if (args.updated.Count > 0)
-        {
-            var item = args.updated[0];
-            if (item.trackingState == TrackingState.Tracking && AppManager.instance.currentArObjectInstance == null)
-                PlaceObject(item.gameObject);
-        }*/
     }
 
     void Place(int i, GameObject anchor)
@@ -57,12 +53,22 @@ public class ArImagePlaceHandler : MonoBehaviour
         AppManager.instance.CreateNewARObjectInstanceNonDestroy(SelectedHandler.selected[i-1], anchor.transform);
     }
 
-    void PlaceObject(GameObject anchor)
+    void ExitMode(AppState current, AppState last)
     {
-        AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, anchor.transform);
-        
-        Debug.Log("Placed Object");
+        if (current == uiPanel.targetState)
+        {
+            Debug.LogWarning("exiting!");
+            //DestroyInstances();
+        }
+    }
 
-        AppManager.instance.CurrenState = AppState.LookState;
+    void DestroyInstances()
+    {
+        foreach (var item in AppManager.instance.CachedInstances)
+        {
+            AppManager.instance.OnDeletedArObjInstance?.Invoke();
+
+            item.instance.SetActive(false);
+        }
     }
 }

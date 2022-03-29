@@ -115,12 +115,8 @@ public class ARPlaceHandler : MonoBehaviour
 
             AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, anchor.transform);
 
-            if (AppManager.instance.currentArObject == specialObjText)
-            {
-                AppManager.instance.CurrenState = AppState.TextLookState;
-            }
-            else
-                AppManager.instance.CurrenState = AppState.LookState;
+            if (AppManager.instance.currentArObject == specialObjText) AppManager.instance.CurrenState = AppState.TextLookState;
+            else AppManager.instance.CurrenState = AppState.LookState;
         }
     }
 }

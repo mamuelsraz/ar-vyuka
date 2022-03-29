@@ -96,6 +96,9 @@ public class AppManager : MonoBehaviour
 
     public void CreateNewARObjectInstance(ArObject arObj, Transform parent)
     {
+        if (parent != null)
+            Debug.LogWarning(parent.position);
+        else Debug.LogWarning("x:0 y:0 z:0");
 
         foreach (var item in CachedInstances)
         {
@@ -107,7 +110,7 @@ public class AppManager : MonoBehaviour
                 item.instance.SetActive(true);
 
                 Debug.Log("instance already cached: enabling it");
-                
+
                 DestroyCurrentArObjInstance();
                 currentArObjectInstance = item;
 
