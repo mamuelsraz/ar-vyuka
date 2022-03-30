@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
+  m_Name: Shoes
+  m_EditorClassIdentifier: 
+  obj: {fileID: 237117752361283119, guid: f1427f2836761a84aa5070307d9ff059, type: 3}
+  category: 2
+  BundleName: Clothes
+  NamesInLanguages:
+  - name: Shoes
+    language: en-EN
