@@ -89,52 +89,53 @@ public class AppManager : MonoBehaviour
         OnDeletedArObjInstance?.Invoke();
 
         if (currentArObjectInstance != null)
+        {
+            currentArObjectInstance.instance.transform.parent = null;
             currentArObjectInstance.instance.SetActive(false);
+        }
 
         currentArObjectInstance = null;
     }
 
+    public void DestroyInstance(ArObjectInstance instance)
+    {
+        currentArObjectInstance = instance;
+        DestroyCurrentArObjInstance();
+    }
+
     public void CreateNewARObjectInstance(ArObject arObj, Transform parent)
     {
-        if (parent != null)
-            Debug.LogWarning(parent.position);
-        else Debug.LogWarning("x:0 y:0 z:0");
-
         foreach (var item in CachedInstances)
         {
             if (item.ArObj == arObj)
             {
-                item.instance.transform.parent = parent;
-                item.instance.transform.localPosition = Vector3.zero;
-                item.instance.transform.localRotation = Quaternion.identity;
-                item.instance.SetActive(true);
+                SetupInstance(item, parent);
 
                 Debug.Log("instance already cached: enabling it");
 
                 DestroyCurrentArObjInstance();
                 currentArObjectInstance = item;
-
                 OnNewArObjInstance.Invoke();
+
+                DebugPosition(parent);
 
                 return;
             }
         }
 
         GameObject obj = Instantiate(arObj.obj, parent);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localRotation = Quaternion.identity;
-        obj.SetActive(true);
-
         ArObjectInstance instance = new ArObjectInstance(obj, arObj);
+
+        SetupInstance(instance, parent);
 
         Debug.Log("new instance created");
 
         DestroyCurrentArObjInstance();
         currentArObjectInstance = instance;
-
         OnNewArObjInstance.Invoke();
-
         CachedInstances.Add(instance);
+
+        DebugPosition(parent);
     }
 
     public void CreateNewARObjectInstanceNonDestroy(ArObject arObj, Transform parent)
@@ -144,35 +145,58 @@ public class AppManager : MonoBehaviour
         {
             if (item.ArObj == arObj)
             {
-                item.instance.transform.parent = parent;
-                item.instance.transform.localPosition = Vector3.zero;
-                item.instance.transform.localRotation = Quaternion.identity;
-                item.instance.SetActive(true);
+                SetupInstance(item, parent);
 
                 Debug.Log("instance already cached: enabling it");
 
                 currentArObjectInstance = item;
-
                 OnNewArObjInstance.Invoke();
+
+                DebugPosition(parent);
 
                 return;
             }
         }
 
         GameObject obj = Instantiate(arObj.obj, parent);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localRotation = Quaternion.identity;
-        obj.SetActive(true);
-
         ArObjectInstance instance = new ArObjectInstance(obj, arObj);
+
+        SetupInstance(instance, parent);
 
         Debug.Log("new instance created");
 
         currentArObjectInstance = instance;
-
         OnNewArObjInstance.Invoke();
-
         CachedInstances.Add(instance);
+
+        DebugPosition(parent);
+    }
+
+    void SetupInstance(ArObjectInstance ARinstance, Transform parent)
+    {
+        ARinstance.instance.transform.parent = parent;
+        ARinstance.instance.transform.localPosition = Vector3.zero;
+        ARinstance.instance.transform.localRotation = Quaternion.identity;
+        ARinstance.instance.SetActive(true);
+
+        Debug.LogWarning(ARinstance.instance.transform.position);
+    }
+
+    void DebugPosition(Transform parent)
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
+        {
+            Destroy(item);
+        }
+
+        GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        obj.transform.parent = parent;
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localScale = Vector3.one * 0.1f;
+        obj.tag = "Respawn";
+        obj.name = Time.time.ToString();
+
+        Debug.Log(obj.transform.position);
     }
 }
 

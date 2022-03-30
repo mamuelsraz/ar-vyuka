@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "104d78890411",
         "name": "com.DefaultCompany.arvyuka",
-        "processId": 12050,
+        "processId": 24402,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,55 +11,49 @@
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 28920,
+            "processId": 14630,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 29612,
+            "processId": 18234,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 31066,
+            "processId": 18949,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 31626,
+            "processId": 19704,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 1358,
+            "processId": 20882,
             "exited": true
         },
         {
             "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 2234,
+            "name": "com.miui.home",
+            "processId": 1685,
             "exited": false
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 10123,
+            "processId": 23109,
             "exited": false
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 10889,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 12050,
+            "processId": 24402,
             "exited": false
         }
     ],

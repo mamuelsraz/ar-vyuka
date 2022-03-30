@@ -11,12 +11,15 @@ public class ArImagePlaceHandler : MonoBehaviour
     public UIAppPanel uiPanel;
 
     ARTrackedImageManager m_ArTrackedImageManager;
+    ARAnchorManager m_AnchorManager;
 
     // Start is called before the first frame update
     void Start()
     {
         AppManager.instance.OnStateExit.AddListener(ExitMode);
+
         m_ArTrackedImageManager = GetComponent<ARTrackedImageManager>();
+
         m_ArTrackedImageManager.trackedImagesChanged += OnImagesChanged;
     }
 
@@ -50,7 +53,11 @@ public class ArImagePlaceHandler : MonoBehaviour
     void Place(int i, GameObject anchor)
     {
         if (i > SelectedHandler.selected.Count) return;
-        AppManager.instance.CreateNewARObjectInstanceNonDestroy(SelectedHandler.selected[i-1], anchor.transform);
+
+        /*GameObject parent = new GameObject();
+        parent.transform.position = anchor.transform.position;*/
+
+        AppManager.instance.CreateNewARObjectInstance(SelectedHandler.selected[i - 1], anchor.transform);
     }
 
     void ExitMode(AppState current, AppState last)
@@ -58,7 +65,7 @@ public class ArImagePlaceHandler : MonoBehaviour
         if (current == uiPanel.targetState)
         {
             Debug.LogWarning("exiting!");
-            //DestroyInstances();
+            DestroyInstances();
         }
     }
 
@@ -66,9 +73,7 @@ public class ArImagePlaceHandler : MonoBehaviour
     {
         foreach (var item in AppManager.instance.CachedInstances)
         {
-            AppManager.instance.OnDeletedArObjInstance?.Invoke();
-
-            item.instance.SetActive(false);
+            AppManager.instance.DestroyInstance(item);
         }
     }
 }
