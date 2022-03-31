@@ -117,8 +117,6 @@ public class AppManager : MonoBehaviour
                 currentArObjectInstance = item;
                 OnNewArObjInstance.Invoke();
 
-                DebugPosition(parent);
-
                 return;
             }
         }
@@ -134,8 +132,6 @@ public class AppManager : MonoBehaviour
         currentArObjectInstance = instance;
         OnNewArObjInstance.Invoke();
         CachedInstances.Add(instance);
-
-        DebugPosition(parent);
     }
 
     public void CreateNewARObjectInstanceNonDestroy(ArObject arObj, Transform parent)
@@ -152,8 +148,6 @@ public class AppManager : MonoBehaviour
                 currentArObjectInstance = item;
                 OnNewArObjInstance.Invoke();
 
-                DebugPosition(parent);
-
                 return;
             }
         }
@@ -168,8 +162,6 @@ public class AppManager : MonoBehaviour
         currentArObjectInstance = instance;
         OnNewArObjInstance.Invoke();
         CachedInstances.Add(instance);
-
-        DebugPosition(parent);
     }
 
     void SetupInstance(ArObjectInstance ARinstance, Transform parent)
@@ -180,23 +172,6 @@ public class AppManager : MonoBehaviour
         ARinstance.instance.SetActive(true);
 
         Debug.LogWarning(ARinstance.instance.transform.position);
-    }
-
-    void DebugPosition(Transform parent)
-    {
-        foreach (var item in GameObject.FindGameObjectsWithTag("Respawn"))
-        {
-            Destroy(item);
-        }
-
-        GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        obj.transform.parent = parent;
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localScale = Vector3.one * 0.1f;
-        obj.tag = "Respawn";
-        obj.name = Time.time.ToString();
-
-        Debug.Log(obj.transform.position);
     }
 }
 

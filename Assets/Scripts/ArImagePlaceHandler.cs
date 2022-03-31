@@ -8,18 +8,16 @@ using UnityEngine.XR.ARSubsystems;
 public class ArImagePlaceHandler : MonoBehaviour
 {
     public UIImageObjectPopulator SelectedHandler;
-    public UIAppPanel uiPanel;
 
     ARTrackedImageManager m_ArTrackedImageManager;
     ARAnchorManager m_AnchorManager;
 
+    List<ArObject> spawned;
+
     // Start is called before the first frame update
     void Start()
     {
-        AppManager.instance.OnStateExit.AddListener(ExitMode);
-
         m_ArTrackedImageManager = GetComponent<ARTrackedImageManager>();
-
         m_ArTrackedImageManager.trackedImagesChanged += OnImagesChanged;
     }
 
@@ -31,42 +29,46 @@ public class ArImagePlaceHandler : MonoBehaviour
             if (!m_ArTrackedImageManager.enabled)
             {
                 m_ArTrackedImageManager.enabled = true;
+                ResetImageTracking();
             }
         }
         else
         {
-            if (m_ArTrackedImageManager.enabled) m_ArTrackedImageManager.enabled = false;
+            if (m_ArTrackedImageManager.enabled)
+            {
+                m_ArTrackedImageManager.enabled = false;
+                DestroyInstances();
+            }
         }
     }
 
     void OnImagesChanged(ARTrackedImagesChangedEventArgs args)
     {
-        if (args.added.Count > 0)
+
+        foreach (var item in args.added)
         {
-            foreach (var item in args.added)
-            {
-                Place(Convert.ToInt32(item.referenceImage.name), item.gameObject);
-            }
+            Place(Convert.ToInt32(item.referenceImage.name), item.gameObject);
+
         }
+        foreach (var item in args.updated)
+        {
+            if (item.trackingState == TrackingState.Tracking)
+                Place(Convert.ToInt32(item.referenceImage.name), item.gameObject);
+        }
+
     }
 
     void Place(int i, GameObject anchor)
     {
         if (i > SelectedHandler.selected.Count) return;
 
-        /*GameObject parent = new GameObject();
-        parent.transform.position = anchor.transform.position;*/
+        ArObject arObject = SelectedHandler.selected[i - 1];
 
-        AppManager.instance.CreateNewARObjectInstance(SelectedHandler.selected[i - 1], anchor.transform);
-    }
+        if (spawned.Contains(arObject)) return;
 
-    void ExitMode(AppState current, AppState last)
-    {
-        if (current == uiPanel.targetState)
-        {
-            Debug.LogWarning("exiting!");
-            DestroyInstances();
-        }
+        Debug.LogError("spawn " + i);
+        AppManager.instance.CreateNewARObjectInstanceNonDestroy(arObject, anchor.transform);
+        spawned.Add(arObject);
     }
 
     void DestroyInstances()
@@ -75,5 +77,10 @@ public class ArImagePlaceHandler : MonoBehaviour
         {
             AppManager.instance.DestroyInstance(item);
         }
+    }
+
+    void ResetImageTracking()
+    {
+        spawned = new List<ArObject>();
     }
 }
