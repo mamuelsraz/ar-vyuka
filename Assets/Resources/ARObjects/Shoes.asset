@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 237117752361283119, guid: f1427f2836761a84aa5070307d9ff059, type: 3}
   category: 2
-  BundleName: Clothes
+  BundleName: 
   NamesInLanguages:
-  - name: Shoes
+  - name: shoes
     language: en-EN
+  - name: chaussures
+    language: fr-FR
+  - name: obuv
+    language: cs-CS
+  - name: "\u0442\u0443\u0444\u043B\u0438"
+    language: ru-RU

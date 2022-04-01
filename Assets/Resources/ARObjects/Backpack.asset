@@ -16,7 +16,11 @@ MonoBehaviour:
   category: 2
   BundleName: backpack
   NamesInLanguages:
-  - name: Backpack
+  - name: backpack
     language: en-EN
   - name: "sac \xE0 dos"
     language: fr-FR
+  - name: "ba\u0165oh"
+    language: cs-CS
+  - name: "\u0440\u044E\u043A\u0437\u0430\u043A"
+    language: ru-RU

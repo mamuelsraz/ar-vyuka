@@ -16,7 +16,11 @@ MonoBehaviour:
   category: 0
   BundleName: juice
   NamesInLanguages:
-  - name: Juice
+  - name: iuice
     language: en-EN
-  - name: Jus
+  - name: jus
     language: fr-FR
+  - name: "d\u017Eus"
+    language: cs-CS
+  - name: "\u0441\u043E\u043A"
+    language: ru-RU
