@@ -14,11 +14,16 @@ public class LookModeHandler : MonoBehaviour
     TextToSpeech TTSManager;
 
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI spesPrepText;
+    public TextMeshProUGUI unspesPrepText;
+
     public Image loadingImage;
     [SerializeField] float rotationSpeed;
 
     UIAppPanel uiPanel;
     bool loading;
+
+    string currentLanguage = "en-EN";
 
     private void Start()
     {
@@ -41,19 +46,35 @@ public class LookModeHandler : MonoBehaviour
         }
     }
 
-    public void PlaySound(string language)
+    public void PlaySound(int mode)
     {
         ArObjectInstance obj = AppManager.instance.currentArObjectInstance;
 
         if (AppManager.instance.currentArObject != null)
         {
-            string name = NameInLanguage.Find(obj.ArObj.NamesInLanguages, language);
+            NameInLanguage text = obj.ArObj.Find(currentLanguage);
 
-            if (name != null)
+            if (text != null)
             {
-                nameText.text = name;
-                TTSManager.Setting(language, TTSManager.pitch, TTSManager.rate);
-                TTSManager.StartSpeak(name);
+                string speech = "";
+
+                switch (mode)
+                {
+                    default:
+                        break;
+                    case 0:
+                        speech = text.name;
+                        break;
+                    case 1:
+                        speech = text.unspesPrep + " " + text.name;
+                        break;
+                    case 2:
+                        speech = text.spesPrep + " " + text.name;
+                        break;
+                }
+
+                TTSManager.Setting(currentLanguage, TTSManager.pitch, TTSManager.rate);
+                TTSManager.StartSpeak(speech);
 
                 StartLoading();
             }
@@ -63,6 +84,30 @@ public class LookModeHandler : MonoBehaviour
             Debug.LogError("No current AR object to play");
         }
     }
+
+    public void ChangeLanguage(string language)
+    {
+        currentLanguage = language;
+
+        ArObjectInstance obj = AppManager.instance.currentArObjectInstance;
+
+        if (AppManager.instance.currentArObject != null)
+        {
+            NameInLanguage text = obj.ArObj.Find(currentLanguage);
+
+            if (name != null)
+            {
+                nameText.text = text.name;
+                unspesPrepText.text = text.unspesPrep;
+                spesPrepText.text = text.spesPrep;
+            }
+        }
+        else
+        {
+            Debug.LogError("No current AR object to play");
+        }
+    }
+
 
     void StartLoading()
     {

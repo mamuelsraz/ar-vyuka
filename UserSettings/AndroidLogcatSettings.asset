@@ -3,41 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "104d78890411",
         "name": "com.DefaultCompany.arvyuka",
-        "processId": 8208,
+        "processId": 6703,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 14630,
-            "exited": true
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 18234,
-            "exited": true
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 18949,
-            "exited": true
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 19704,
-            "exited": true
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 20882,
-            "exited": true
-        },
         {
             "deviceId": "104d78890411",
             "name": "com.miui.home",
@@ -47,31 +17,55 @@
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 23109,
+            "processId": 11377,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 26712,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 27768,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 28426,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 28919,
+            "exited": true
+        },
+        {
+            "deviceId": "104d78890411",
+            "name": "com.DefaultCompany.arvyuka",
+            "processId": 29498,
             "exited": false
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 24402,
+            "processId": 2382,
             "exited": false
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 6258,
+            "processId": 5094,
             "exited": false
         },
         {
             "deviceId": "104d78890411",
             "name": "com.DefaultCompany.arvyuka",
-            "processId": 7114,
-            "exited": false
-        },
-        {
-            "deviceId": "104d78890411",
-            "name": "com.DefaultCompany.arvyuka",
-            "processId": 8208,
+            "processId": 6703,
             "exited": false
         }
     ],
