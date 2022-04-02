@@ -10,6 +10,17 @@ public class ArObject : ScriptableObject
     public string BundleName;
     [Space(20)]
     public NameInLanguage[] NamesInLanguages;
+
+    public NameInLanguage Find(string key)
+    {
+        foreach (var item in NamesInLanguages)
+        {
+            if (item.language == key) return item;
+        }
+
+        Debug.LogWarning("No names found by language");
+        return null;
+    }
 }
 
 
@@ -18,6 +29,8 @@ public class NameInLanguage
 {
     public string name;
     public string language;
+    public string spesPrep;
+    public string unspesPrep;
 
     public static string Find(NameInLanguage[] names, string key)
     {

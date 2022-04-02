@@ -18,9 +18,17 @@ MonoBehaviour:
   NamesInLanguages:
   - name: backpack
     language: en-EN
+    spesPrep: the
+    unspesPrep: a
   - name: "sac \xE0 dos"
     language: fr-FR
+    spesPrep: le
+    unspesPrep: un
   - name: "ba\u0165oh"
     language: cs-CS
+    spesPrep: ten
+    unspesPrep: jeden
   - name: "\u0440\u044E\u043A\u0437\u0430\u043A"
     language: ru-RU
+    spesPrep: 
+    unspesPrep: 
