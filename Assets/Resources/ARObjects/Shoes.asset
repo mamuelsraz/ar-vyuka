@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
   m_Name: Shoes
   m_EditorClassIdentifier: 
-  obj: {fileID: 7508250853571508736, guid: bbceb7af9c53ad34d84d1aa1e88f7855, type: 3}
+  obj: {fileID: 1813839793075457880, guid: 4feff44896fd6e5419b0d22302d8fd0a, type: 3}
   category: 2
   BundleName: backpack
   NamesInLanguages:
