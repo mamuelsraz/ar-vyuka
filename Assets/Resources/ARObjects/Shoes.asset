@@ -12,15 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
   m_Name: Shoes
   m_EditorClassIdentifier: 
-  obj: {fileID: 237117752361283119, guid: f1427f2836761a84aa5070307d9ff059, type: 3}
+  obj: {fileID: 7508250853571508736, guid: bbceb7af9c53ad34d84d1aa1e88f7855, type: 3}
   category: 2
-  BundleName: 
+  BundleName: backpack
   NamesInLanguages:
   - name: shoes
     language: en-EN
+    spesPrep: 
+    unspesPrep: 
   - name: chaussures
     language: fr-FR
+    spesPrep: 
+    unspesPrep: 
   - name: obuv
     language: cs-CS
+    spesPrep: 
+    unspesPrep: 
   - name: "\u0442\u0443\u0444\u043B\u0438"
     language: ru-RU
+    spesPrep: 
+    unspesPrep: 

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2395833405
+CRC: 2325939397
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0bd46c7e90659775d8cff2a1c8b9aee5
+    Hash: 07323ad862661c152fbad9dc7f5b76e0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 05052f3cefa9ce774f2f361d4474fcf9
@@ -21,6 +21,7 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: NameInLanguage
 Assets:
+- Assets/Resources/ARObjects/Shoes.asset
 - Assets/Resources/ARObjects/Backpack.asset
 - Assets/Resources/ARObjects/Juice.asset
 Dependencies:

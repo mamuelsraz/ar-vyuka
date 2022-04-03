@@ -1,0 +1,46 @@
+ManifestFileVersion: 0
+CRC: 1979437155
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9e449c8e88ea40d5a83226656f95f327
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1fa84518f4804b69599d859838526740
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Textures/AirForce1Black/airforce1_None_BaseColor.png
+- Assets/Textures/AirForce1White/airforce1_None_Roughness.png
+- Assets/Textures/AirForce1Black/airforce1_None_Metallic.png
+- Assets/Textures/AirForce1White/airforce1_None_Height.png
+- Assets/Prefabs/boty.prefab
+- Assets/Models/airforce1s.obj
+- Assets/Textures/AirForce1Black/airforce1_None_Normal.png
+- Assets/Textures/AirForce1Black/airforce1_None_Height.png
+- Assets/Models/airforce1box.obj
+- Assets/Textures/AirForce1Black/airforce1_None_Roughness.png
+- Assets/Materials 1/AirForceWhite.mat
+- Assets/Textures/AirForce1White/airforce1_None_BaseColor.png
+- Assets/Materials 1/AirForceBlack.mat
+- Assets/Textures/AirForce1White/airforce1_None_Normal.png
+- Assets/Textures/AirForceBox/airforce1box_None_BaseColor.png
+- Assets/Textures/AirForce1White/airforce1_None_Metallic.png
+Dependencies: []
