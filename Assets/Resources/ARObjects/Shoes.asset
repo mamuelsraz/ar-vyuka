@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1813839793075457880, guid: 4feff44896fd6e5419b0d22302d8fd0a, type: 3}
   category: 1
-  BundleName: backpack
+  BundleName: boty
   NamesInLanguages:
   - name: shoes
     language: en-EN
