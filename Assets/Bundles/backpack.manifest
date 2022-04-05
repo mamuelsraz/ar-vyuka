@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2498732791
+CRC: 3161767565
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d11599eca1beb74f1b6bed65e56d3fd3
+    Hash: a5c72997678bc0d1ab0204a8ceaf20eb
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa84518f4804b69599d859838526740
@@ -27,7 +27,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Textures/Batoh/Batoh_None_Roughness.png
-- Assets/Textures/Batoh/Batoh_None_Metallic.png
 - Assets/Prefabs/Batoh.prefab
 Dependencies: []

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1823333383
+CRC: 707418834
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5cebbd5d9759cb0b02bd3b0e4ff9c868
+    Hash: 6404c6a47c07ab1d786ac2af4f5d9543
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa84518f4804b69599d859838526740
@@ -27,18 +27,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Textures/AirForce1Black/airforce1_None_BaseColor.png
-- Assets/Textures/AirForce1White/airforce1_None_Roughness.png
-- Assets/Textures/AirForce1Black/airforce1_None_Metallic.png
-- Assets/Textures/AirForce1White/airforce1_None_Height.png
 - Assets/Prefabs/boty.prefab
-- Assets/Textures/AirForce1Black/airforce1_None_Normal.png
-- Assets/Textures/AirForce1Black/airforce1_None_Height.png
-- Assets/Textures/AirForce1Black/airforce1_None_Roughness.png
-- Assets/Materials 1/AirForceWhite.mat
-- Assets/Textures/AirForce1White/airforce1_None_BaseColor.png
-- Assets/Materials 1/AirForceBlack.mat
-- Assets/Textures/AirForce1White/airforce1_None_Normal.png
-- Assets/Textures/AirForceBox/airforce1box_None_BaseColor.png
-- Assets/Textures/AirForce1White/airforce1_None_Metallic.png
 Dependencies: []

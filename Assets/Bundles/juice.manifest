@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1130474031
+CRC: 1910371503
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: dc461e3999f6cf08b8e9a0d0f5602372
+    Hash: 03e30221190731e5ac10c5b37dddb528
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa84518f4804b69599d859838526740
@@ -28,8 +28,4 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Prefabs/Juice.prefab
-- Assets/Textures/Juice/Juice_None_BaseColor.png
-- Assets/Textures/Juice/Juice_None_Roughness.png
-- Assets/Textures/Juice/Juice_None_Metallic.png
-- Assets/Textures/Juice/ASM - PBR Metallic Roughness_Opacity.png
 Dependencies: []
