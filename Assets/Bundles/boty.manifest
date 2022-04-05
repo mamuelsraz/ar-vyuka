@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 137343464
+CRC: 1823333383
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 75d6d53cd48503fd3342a05e2e0e6319
+    Hash: 5cebbd5d9759cb0b02bd3b0e4ff9c868
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa84518f4804b69599d859838526740
@@ -32,10 +32,8 @@ Assets:
 - Assets/Textures/AirForce1Black/airforce1_None_Metallic.png
 - Assets/Textures/AirForce1White/airforce1_None_Height.png
 - Assets/Prefabs/boty.prefab
-- Assets/Models/airforce1s.obj
 - Assets/Textures/AirForce1Black/airforce1_None_Normal.png
 - Assets/Textures/AirForce1Black/airforce1_None_Height.png
-- Assets/Models/airforce1box.obj
 - Assets/Textures/AirForce1Black/airforce1_None_Roughness.png
 - Assets/Materials 1/AirForceWhite.mat
 - Assets/Textures/AirForce1White/airforce1_None_BaseColor.png
