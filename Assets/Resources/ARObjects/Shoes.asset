@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shoes
   m_EditorClassIdentifier: 
   obj: {fileID: 1813839793075457880, guid: 4feff44896fd6e5419b0d22302d8fd0a, type: 3}
-  category: 1
+  category: 3
   BundleName: boty
   NamesInLanguages:
   - name: shoes
