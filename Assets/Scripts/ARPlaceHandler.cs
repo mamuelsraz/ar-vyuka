@@ -13,7 +13,6 @@ public class ARPlaceHandler : MonoBehaviour
 {
     [SerializeField] GameObject placementIndicator;
     [SerializeField] Button placeButton;
-    public ArObject specialObjText;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
     List<ARAnchor> m_AnchorPoints;
@@ -40,7 +39,7 @@ public class ARPlaceHandler : MonoBehaviour
 #if UNITY_EDITOR
             AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, null);
 
-            if (AppManager.instance.currentArObject == specialObjText)
+            if (AppManager.instance.currentArObject.category == Category.special)
             {
                 AppManager.instance.CurrenState = AppState.TextLookState;
             }
@@ -115,7 +114,8 @@ public class ARPlaceHandler : MonoBehaviour
 
             AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, anchor.transform);
 
-            if (AppManager.instance.currentArObject == specialObjText) AppManager.instance.CurrenState = AppState.TextLookState;
+            if (AppManager.instance.currentArObject.category == Category.special) 
+                AppManager.instance.CurrenState = AppState.TextLookState;
             else AppManager.instance.CurrenState = AppState.LookState;
         }
     }

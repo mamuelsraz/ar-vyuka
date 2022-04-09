@@ -51,5 +51,6 @@ public enum Category
     food,
     animals,
     other,
-    accessories
+    accessories,
+    special
 }

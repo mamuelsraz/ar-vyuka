@@ -43,6 +43,8 @@ public class TextLookModeHandler : MonoBehaviour
             str.name = inputField.text;
         }
 
+        if (text == null) return;
+
         text.Text = inputField.text;
         text.GenerateText();
         colorChanger.NewArObjInstance();

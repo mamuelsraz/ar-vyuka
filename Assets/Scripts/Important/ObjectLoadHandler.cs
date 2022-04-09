@@ -50,8 +50,9 @@ public class ObjectLoadHandler : MonoBehaviour
                 AllObjects.Add(item.category, new List<ArObject>());
             }
 
-            List<ArObject> list = AllObjects[item.category];
-            list.Add(item);
+            AllObjects[item.category].Add(item);
+
+            Debug.Log($"done");
         }
 
         return AllObjects;
@@ -97,6 +98,11 @@ public class ObjectLoadHandler : MonoBehaviour
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
             if (bundle != null)
             {
+                foreach (var item in bundle.LoadAllAssets<GameObject>())
+                {
+                    Debug.LogWarning(item.name);
+                }
+
                 GameObject loadedObject = bundle.LoadAllAssets<GameObject>()[0];
 
                 if (loadedObject != null)

@@ -85,6 +85,27 @@ public class LookModeHandler : MonoBehaviour
         }
     }
 
+    public void PlaySound(string language)
+    {
+        ArObjectInstance obj = AppManager.instance.currentArObjectInstance;
+
+        if (AppManager.instance.currentArObject != null)
+        {
+            NameInLanguage text = obj.ArObj.Find(language);
+
+
+
+            TTSManager.Setting(currentLanguage, TTSManager.pitch, TTSManager.rate);
+            TTSManager.StartSpeak(text.name);
+
+            StartLoading();
+        }
+        else
+        {
+            Debug.LogError("No current AR object to play");
+        }
+    }
+
     public void ChangeLanguage(string language)
     {
         currentLanguage = language;

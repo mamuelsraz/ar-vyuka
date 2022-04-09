@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: TextObj
   m_EditorClassIdentifier: 
   obj: {fileID: 8457316716411678308, guid: 9bc77c89c92569543bf755232af136c7, type: 3}
-  category: 2
+  category: 4
   BundleName: 
   NamesInLanguages:
   - name: Hello World
     language: en-EN
+    spesPrep: 
+    unspesPrep: 
   - name: Hello World
     language: fr-FR
+    spesPrep: 
+    unspesPrep: 
