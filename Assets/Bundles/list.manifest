@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3151999572
+CRC: 3306218820
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 40ebec413c780e99377784f39517d2b8
+    Hash: 7ae9dbf6c2bf0f5edee88ff81655e10f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 05052f3cefa9ce774f2f361d4474fcf9
@@ -22,9 +22,11 @@ SerializeReferenceClassIdentifiers:
   ClassName: NameInLanguage
 Assets:
 - Assets/Resources/ARObjects/Shoes.asset
+- Assets/Resources/ARObjects/Burger.asset
 - Assets/Resources/ARObjects/Backpack.asset
 - Assets/Resources/ARObjects/Juice.asset
 Dependencies:
 - D:/42079/Projects/_Github/ar-vyuka-content/Assets/Bundles/backpack
 - D:/42079/Projects/_Github/ar-vyuka-content/Assets/Bundles/boty
+- D:/42079/Projects/_Github/ar-vyuka-content/Assets/Bundles/burger
 - D:/42079/Projects/_Github/ar-vyuka-content/Assets/Bundles/juice

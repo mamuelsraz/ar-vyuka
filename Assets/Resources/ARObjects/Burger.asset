@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
-  m_Name: Shoes
+  m_Name: Burger
   m_EditorClassIdentifier: 
-  obj: {fileID: 1813839793075457880, guid: 4feff44896fd6e5419b0d22302d8fd0a, type: 3}
-  category: 3
-  BundleName: boty
+  obj: {fileID: 7455231590609600767, guid: 487273d8ed015e9459438ac6ef09f463, type: 3}
+  category: 0
+  BundleName: burger
   NamesInLanguages:
-  - name: shoes
+  - name: burger
     language: en-EN
     spesPrep: the
-    unspesPrep: 
-  - name: chaussures
+    unspesPrep: a
+  - name: burger
     language: fr-FR
-    spesPrep: les
-    unspesPrep: des
-  - name: obuv
-    language: cs-CS
-    spesPrep: ta
+    spesPrep: le
+    unspesPrep: un
+  - name: burgr
+    language: cz-CZ
+    spesPrep: ten
     unspesPrep: 
-  - name: "\u0442\u0443\u0444\u043B\u0438"
-    language: ru-RU
-    spesPrep: 
+  - name: burgr
+    language: cz-CZ
+    spesPrep: ten
     unspesPrep: 
