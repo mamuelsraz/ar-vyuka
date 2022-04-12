@@ -25,10 +25,10 @@ MonoBehaviour:
     spesPrep: le
     unspesPrep: un
   - name: burgr
-    language: cz-CZ
+    language: cs-CS
     spesPrep: ten
     unspesPrep: 
-  - name: burgr
-    language: cz-CZ
-    spesPrep: ten
+  - name: "\u0431\u0443\u0440\u0433\u0435\u0440"
+    language: ru-RU
+    spesPrep: 
     unspesPrep: 
