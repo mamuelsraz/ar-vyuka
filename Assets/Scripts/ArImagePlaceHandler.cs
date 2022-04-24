@@ -12,7 +12,7 @@ public class ArImagePlaceHandler : MonoBehaviour
     ARTrackedImageManager m_ArTrackedImageManager;
     ARAnchorManager m_AnchorManager;
 
-    List<ArObject> spawned;
+    int current;
 
     // Start is called before the first frame update
     void Start()
@@ -37,18 +37,27 @@ public class ArImagePlaceHandler : MonoBehaviour
             if (m_ArTrackedImageManager.enabled)
             {
                 m_ArTrackedImageManager.enabled = false;
-                DestroyInstances();
             }
         }
     }
 
     void OnImagesChanged(ARTrackedImagesChangedEventArgs args)
     {
+        foreach (var item in args.updated)
+        {
+            if (item.trackingState == TrackingState.Tracking)
+            {
+                if (Convert.ToInt32(item.referenceImage.name) == current)
+                {
+                    Debug.LogWarning($"item {item.referenceImage.name} is already active and tracked");
+                    return;
+                }
+            }
+        }
 
         foreach (var item in args.added)
         {
             Place(Convert.ToInt32(item.referenceImage.name), item.gameObject);
-
         }
         foreach (var item in args.updated)
         {
@@ -64,23 +73,19 @@ public class ArImagePlaceHandler : MonoBehaviour
 
         ArObject arObject = SelectedHandler.selected[i - 1];
 
-        if (spawned.Contains(arObject)) return;
+        //if (AppManager.instance.currentArObject == arObject) return;
+
+        AppManager.instance.currentArObject = arObject;
+        current = i;
 
         Debug.LogError("spawn " + i);
-        AppManager.instance.CreateNewARObjectInstanceNonDestroy(arObject, anchor.transform);
-        spawned.Add(arObject);
-    }
+        AppManager.instance.CreateNewARObjectInstance(arObject, anchor.transform);
 
-    void DestroyInstances()
-    {
-        foreach (var item in AppManager.instance.CachedInstances)
-        {
-            AppManager.instance.DestroyInstance(item);
-        }
+        AppManager.instance.CurrenState = AppState.LookState;
     }
 
     void ResetImageTracking()
     {
-        spawned = new List<ArObject>();
+        current = 0;
     }
 }

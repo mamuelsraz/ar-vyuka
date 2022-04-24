@@ -95,7 +95,7 @@ public class LookModeHandler : MonoBehaviour
 
 
 
-            TTSManager.Setting(currentLanguage, TTSManager.pitch, TTSManager.rate);
+            TTSManager.Setting(language, TTSManager.pitch, TTSManager.rate);
             TTSManager.StartSpeak(text.name);
 
             StartLoading();

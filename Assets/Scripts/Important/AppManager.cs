@@ -22,19 +22,7 @@ public class AppManager : MonoBehaviour
 
     public ArObject currentArObject;
     public ARSession session;
-    public AppState[] ARSessionEnabled;
 
-    [HideInInspector]
-    public OnStateEnterEvent OnStateEnter;
-    [HideInInspector]
-    public OnStateEnterEvent OnStateExit;
-    [HideInInspector]
-    public UnityEvent OnNewArObjInstance;
-    [HideInInspector]
-    public UnityEvent OnDeletedArObjInstance;
-
-    private AppState lastState;
-    private AppState currentState;
     public AppState CurrenState
     {
         get { return currentState; }
@@ -49,25 +37,40 @@ public class AppManager : MonoBehaviour
             }
         }
     }
+    public AppState[] ARSessionEnabled;
+    [HideInInspector]
+    public AppState lastState;
+    private AppState currentState;
+
+    private List<AppState> stateHistory;
+
+    [HideInInspector]
+    public OnStateEnterEvent OnStateEnter;
+    [HideInInspector]
+    public OnStateEnterEvent OnStateExit;
+    [HideInInspector]
+    public UnityEvent OnNewArObjInstance;
+    [HideInInspector]
+    public UnityEvent OnDeletedArObjInstance;
 
     private void Awake()
     {
+        stateHistory = new List<AppState>();
+
         instance = this;
         CachedInstances = new List<ArObjectInstance>();
         CurrenState = AppState.MenuState;
         OnStateEnter.AddListener(ToggleARSession);
+        OnStateEnter.AddListener(ChangeStateHistory);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (CurrenState == AppState.MenuState) Application.Quit();
-            else
-                CurrenState -= 1;
+            //CurrenState = CurrenState - 1;
+            MoveToLastState();
         }
-
-
     }
 
     public void ChangeState(string state)
@@ -172,6 +175,31 @@ public class AppManager : MonoBehaviour
         ARinstance.instance.SetActive(true);
 
         Debug.LogWarning(ARinstance.instance.transform.position);
+    }
+
+    void ChangeStateHistory(AppState newState, AppState lastState)
+    {
+        if (stateHistory.Count > 0 && stateHistory[stateHistory.Count - 1] == newState)
+        {
+            Debug.LogError("going back");
+            stateHistory.RemoveAt(stateHistory.Count - 1);
+        }
+        else
+            stateHistory.Add(lastState);
+
+        string s = "history: ";
+        foreach (var item in stateHistory)
+        {
+            s += " " + (int)item;
+        }
+
+        Debug.LogError(s + " currenstate: " + (int)newState);
+    }
+
+    public void MoveToLastState()
+    {
+        Debug.LogError("going to: " + (int)stateHistory[stateHistory.Count - 1]);
+       if(stateHistory.Count > 0) CurrenState = stateHistory[stateHistory.Count - 1];
     }
 }
 
