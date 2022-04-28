@@ -18,8 +18,9 @@ public class UIImageObjectPopulator : MonoBehaviour
     public Sprite selectedSprite;
     public Sprite deselectedSprite;
 
-    List<ArObject> arObjects;
-    List<Image> buttons;
+    [Space]
+    public List<ArObject> arObjects;
+    public List<Image> buttons;
     [HideInInspector]
     public List<ArObject> selected;
 
@@ -33,9 +34,7 @@ public class UIImageObjectPopulator : MonoBehaviour
 
     public void InitCategories()
     {
-        arObjects = new List<ArObject>();
         selected = new List<ArObject>();
-        buttons = new List<Image>();
 
         bool first = true;
 
@@ -48,10 +47,10 @@ public class UIImageObjectPopulator : MonoBehaviour
 
             button.GetComponentInChildren<TextMeshProUGUI>().text = category.Key.ToString();
             TabButton tabButton = button.gameObject.GetComponent<TabButton>();
-            tabButton.tabGroup = "category";
+            tabButton.tabGroup = "imageCategory";
             tabButton.tab = panel;
 
-            if (first) { first = false; tabButton.startSelected = true; }
+            tabButton.startSelected = true;
 
             //category panel
             foreach (var item in category.Value)
@@ -76,7 +75,7 @@ public class UIImageObjectPopulator : MonoBehaviour
         b.onClick.AddListener(delegate { ButtonClicked(i); });
     }
 
-    void ButtonClicked(int num)
+    public void ButtonClicked(int num)
     {
         if (selected.Contains(arObjects[num]))
         {

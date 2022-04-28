@@ -192,13 +192,10 @@ public class AppManager : MonoBehaviour
         {
             s += " " + (int)item;
         }
-
-        Debug.LogError(s + " currenstate: " + (int)newState);
     }
 
     public void MoveToLastState()
     {
-        Debug.LogError("going to: " + (int)stateHistory[stateHistory.Count - 1]);
        if(stateHistory.Count > 0) CurrenState = stateHistory[stateHistory.Count - 1];
     }
 }

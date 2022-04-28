@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ImagePicker : MonoBehaviour
 {
+    public TMP_InputField inputField;
+    [Space]
     public ArObject arObject;
     public Material material;
     public RawImage image;
-    public float idealScale;
+    public float idealScale = 0.2f;
     Vector2 dimensions = new Vector2();
 
     private void Start()
@@ -16,6 +19,7 @@ public class ImagePicker : MonoBehaviour
         AppManager.instance.OnNewArObjInstance.AddListener(NewArObjInstance);
 
         LoadImage(PlayerPrefs.GetString("imagePath", ""));
+        inputField.onValueChanged.AddListener(TextChanged);
     }
 
     public void PickImage()
@@ -48,16 +52,11 @@ public class ImagePicker : MonoBehaviour
         image.texture = texture;
         material.mainTexture = texture;
 
-        PlayerPrefs.SetString("imagePath", path);
-    }
-
-    public void SpawnImage()
-    {
         AppManager.instance.currentArObject = arObject;
         AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, transform);
         AppManager.instance.DestroyCurrentArObjInstance();
 
-        AppManager.instance.CurrenState = AppState.PlaceState;
+        PlayerPrefs.SetString("imagePath", path);
     }
 
     public void NewArObjInstance()
@@ -67,6 +66,14 @@ public class ImagePicker : MonoBehaviour
         {
             GameObject obj = AppManager.instance.currentArObjectInstance.instance;
             obj.transform.GetChild(0).localScale = new Vector3(dimensions.x, dimensions.y, 1);
+        }
+    }
+
+    public void TextChanged(string value)
+    {
+        foreach (var str in arObject.NamesInLanguages)
+        {
+            str.name = inputField.text;
         }
     }
 }

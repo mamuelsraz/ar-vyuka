@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: imageObj
   m_EditorClassIdentifier: 
   obj: {fileID: 6429908792674164825, guid: 3dcf14ecb6faa9344ad07b4a978e7ac6, type: 3}
-  category: 4
+  category: 2
   BundleName: 
   NamesInLanguages:
-  - name: image
+  - name: negr
     language: en-EN
     spesPrep: 
     unspesPrep: 
-  - name: image
+  - name: negr
     language: fr-FR
     spesPrep: 
     unspesPrep: 
