@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 253644676
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a6f4abde0e7ddb27643012f8ab882c48
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e21293b2cfe26c7fc89f91a66cf489ba
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/stul.prefab
+Dependencies: []
