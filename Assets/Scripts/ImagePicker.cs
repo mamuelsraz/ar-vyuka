@@ -6,6 +6,7 @@ using TMPro;
 
 public class ImagePicker : MonoBehaviour
 {
+    public string name;
     public TMP_InputField inputField;
     [Space]
     public ArObject arObject;
@@ -18,7 +19,7 @@ public class ImagePicker : MonoBehaviour
     {
         AppManager.instance.OnNewArObjInstance.AddListener(NewArObjInstance);
 
-        LoadImage(PlayerPrefs.GetString("imagePath", ""));
+        LoadImage(PlayerPrefs.GetString(name, ""));
         inputField.onValueChanged.AddListener(TextChanged);
     }
 
@@ -35,7 +36,7 @@ public class ImagePicker : MonoBehaviour
     void LoadImage(string path)
     {
         if (path == null || path == "") return;
-        Debug.Log("Image path: " + path);
+        Debug.Log(name + path);
 
         // Create Texture from selected image
         Texture2D texture = NativeGallery.LoadImageAtPath(path);
@@ -56,7 +57,7 @@ public class ImagePicker : MonoBehaviour
         AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, transform);
         AppManager.instance.DestroyCurrentArObjInstance();
 
-        PlayerPrefs.SetString("imagePath", path);
+        PlayerPrefs.SetString(name, path);
     }
 
     public void NewArObjInstance()
