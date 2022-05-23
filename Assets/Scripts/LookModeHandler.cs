@@ -31,8 +31,10 @@ public class LookModeHandler : MonoBehaviour
 
         TTSManager = TextToSpeech.instance;
         nameText.text = "";
+        nameText.text = "";
         TextToSpeech.instance.onDoneEvent.AddListener(StopLoading);
         AppManager.instance.OnStateExit.AddListener(ExitLookMode);
+        //AppManager.instance.OnStateEnter.AddListener(EnterLookMode);
 
         TTSManager.rate = 1;
         TTSManager.pitch = 1;
@@ -45,6 +47,12 @@ public class LookModeHandler : MonoBehaviour
             loadingImage.transform.eulerAngles = new Vector3(0, 0, loadingImage.transform.eulerAngles.z + rotationSpeed * Time.deltaTime);
         }
     }
+
+    /*void EnterLookMode(AppState current, AppState last)
+    {
+        if (current == AppState.LookState || current == AppState.TextLookState)
+            ChangeLanguage("en-EN");
+    }*/
 
     public void PlaySound(int mode)
     {

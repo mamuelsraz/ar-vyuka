@@ -5,6 +5,7 @@ using UnityEngine;
 public class MaterialColorChanger : MonoBehaviour
 {
     public string tagName;
+    public LookModeHandler lookMode;
     public List<MeshRenderer> affectedMeshes;
     public List<Material> defaultMaterials;
 
@@ -29,6 +30,8 @@ public class MaterialColorChanger : MonoBehaviour
                 defaultMaterials.Add(item.material);
             }
         }
+
+        if (lookMode != null) lookMode.ChangeLanguage("en-EN");
     }
 
     public void ChangeCol(Material mat)
