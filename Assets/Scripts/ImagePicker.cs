@@ -70,6 +70,15 @@ public class ImagePicker : MonoBehaviour
         }
     }
 
+    public void Play()
+    {
+        AppManager.instance.currentArObject = arObject;
+        AppManager.instance.CreateNewARObjectInstance(AppManager.instance.currentArObject, transform);
+        AppManager.instance.DestroyCurrentArObjInstance();
+
+        AppManager.instance.CurrenState = AppState.PlaceState;
+    }
+
     public void TextChanged(string value)
     {
         foreach (var str in arObject.NamesInLanguages)
