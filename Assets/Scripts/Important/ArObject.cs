@@ -52,5 +52,6 @@ public enum Category
     animals,
     other,
     accessories,
-    special
+    special,
+    chemistry
 }
