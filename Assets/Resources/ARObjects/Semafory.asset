@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
   m_Name: Semafory
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
-  category: 0
-  BundleName: 
+  obj: {fileID: 7569532807767755482, guid: 27898a80c893976409261b5f3ebfaafe, type: 3}
+  category: 2
+  BundleName: Traffic
   NamesInLanguages: []

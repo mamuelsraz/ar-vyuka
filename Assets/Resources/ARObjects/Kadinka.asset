@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
   m_Name: Kadinka
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
-  category: 0
-  BundleName: 
+  obj: {fileID: 6342926305535776238, guid: 90f50e0a44b419e4abf6f24e3e05f3c3, type: 3}
+  category: 4
+  BundleName: Chemie
   NamesInLanguages: []

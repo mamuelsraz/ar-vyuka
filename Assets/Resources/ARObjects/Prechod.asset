@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddbf72df7d71404297e2478c8bcb9af, type: 3}
   m_Name: Prechod
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
-  category: 0
-  BundleName: 
+  obj: {fileID: 6280100558968145569, guid: 8ec27da06a73e5447b84307853a0bab4, type: 3}
+  category: 2
+  BundleName: Traffic
   NamesInLanguages: []
