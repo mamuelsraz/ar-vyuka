@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 483416243
+CRC: 1915224208
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -12,6 +12,11 @@ AssetBundleManifest:
         Dependency_4: lamp
         Dependency_5: notebook
         Dependency_6: table
+        Dependency_7: banka
+        Dependency_8: kruzitko
+        Dependency_9: kadinka
+        Dependency_10: prechod
+        Dependency_11: semafory
     Info_1:
       Name: backpack
       Dependencies: {}
@@ -32,4 +37,19 @@ AssetBundleManifest:
       Dependencies: {}
     Info_7:
       Name: table
+      Dependencies: {}
+    Info_8:
+      Name: banka
+      Dependencies: {}
+    Info_9:
+      Name: kruzitko
+      Dependencies: {}
+    Info_10:
+      Name: kadinka
+      Dependencies: {}
+    Info_11:
+      Name: prechod
+      Dependencies: {}
+    Info_12:
+      Name: semafory
       Dependencies: {}

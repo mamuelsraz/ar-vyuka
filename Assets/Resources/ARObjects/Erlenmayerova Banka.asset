@@ -13,6 +13,22 @@ MonoBehaviour:
   m_Name: Erlenmayerova Banka
   m_EditorClassIdentifier: 
   obj: {fileID: 8248046689709155986, guid: cb3ac5dec81f0294f98d5ea5edaa078d, type: 3}
-  category: 4
-  BundleName: Chemie
-  NamesInLanguages: []
+  category: 5
+  BundleName: banka
+  NamesInLanguages:
+  - name: missing
+    language: en-EN
+    spesPrep: the
+    unspesPrep: a
+  - name: missing
+    language: fr-FR
+    spesPrep: le
+    unspesPrep: un
+  - name: "ErlenMayerova Ba\u0148ka"
+    language: cs-CS
+    spesPrep: ten
+    unspesPrep: 
+  - name: missing
+    language: ru-RU
+    spesPrep: 
+    unspesPrep: 

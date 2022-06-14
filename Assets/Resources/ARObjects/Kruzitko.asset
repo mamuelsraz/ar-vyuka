@@ -13,6 +13,22 @@ MonoBehaviour:
   m_Name: Kruzitko
   m_EditorClassIdentifier: 
   obj: {fileID: 2743733654650877874, guid: c440dc4a679ba9b40b7d71f18f4c77c6, type: 3}
-  category: 2
-  BundleName: 
-  NamesInLanguages: []
+  category: 3
+  BundleName: kruzitko
+  NamesInLanguages:
+  - name: missing
+    language: en-EN
+    spesPrep: the
+    unspesPrep: a
+  - name: missing
+    language: fr-FR
+    spesPrep: le
+    unspesPrep: un
+  - name: "kru\u017E\xEDtko"
+    language: cs-CS
+    spesPrep: ten
+    unspesPrep: 
+  - name: missing
+    language: ru-RU
+    spesPrep: 
+    unspesPrep: 

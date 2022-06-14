@@ -13,6 +13,22 @@ MonoBehaviour:
   m_Name: Kadinka
   m_EditorClassIdentifier: 
   obj: {fileID: 6342926305535776238, guid: 90f50e0a44b419e4abf6f24e3e05f3c3, type: 3}
-  category: 4
-  BundleName: Chemie
-  NamesInLanguages: []
+  category: 5
+  BundleName: kadinka
+  NamesInLanguages:
+  - name: missing
+    language: en-EN
+    spesPrep: the
+    unspesPrep: a
+  - name: missing
+    language: fr-FR
+    spesPrep: le
+    unspesPrep: un
+  - name: "k\xE1dinka"
+    language: cs-CS
+    spesPrep: ten
+    unspesPrep: 
+  - name: missing
+    language: ru-RU
+    spesPrep: 
+    unspesPrep: 

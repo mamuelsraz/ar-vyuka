@@ -14,5 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 6280100558968145569, guid: 8ec27da06a73e5447b84307853a0bab4, type: 3}
   category: 2
-  BundleName: Traffic
-  NamesInLanguages: []
+  BundleName: prechod
+  NamesInLanguages:
+  - name: missing
+    language: en-EN
+    spesPrep: the
+    unspesPrep: a
+  - name: missing
+    language: fr-FR
+    spesPrep: le
+    unspesPrep: un
+  - name: "p\u0159echod"
+    language: cs-CS
+    spesPrep: ten
+    unspesPrep: 
+  - name: missing
+    language: ru-RU
+    spesPrep: 
+    unspesPrep: 

@@ -14,5 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 7569532807767755482, guid: 27898a80c893976409261b5f3ebfaafe, type: 3}
   category: 2
-  BundleName: Traffic
-  NamesInLanguages: []
+  BundleName: semafory
+  NamesInLanguages:
+  - name: missing
+    language: en-EN
+    spesPrep: the
+    unspesPrep: a
+  - name: missing
+    language: fr-FR
+    spesPrep: le
+    unspesPrep: un
+  - name: semafory
+    language: cs-CS
+    spesPrep: ten
+    unspesPrep: 
+  - name: missing
+    language: ru-RU
+    spesPrep: 
+    unspesPrep: 

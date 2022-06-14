@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 13094008
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4ce444198c27f8f4e9a5914f92a384a9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1fa84518f4804b69599d859838526740
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/Prechod.prefab
+Dependencies: []
